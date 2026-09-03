@@ -1,4 +1,4 @@
-export interface Blog {
+export interface Research {
   slug: string;
   tag: string;
   tagColor: string;
@@ -6,11 +6,11 @@ export interface Blog {
   excerpt: string;
   date: string;
   readTime: string;
-  /** GitBook URL — used as external link on the blog page */
+  /** GitBook URL — used as external link on the research page */
   gitbookUrl: string;
 }
 
-export const blogs: Blog[] = [
+export const researches: Research[] = [
   {
     slug: 'recon-pipeline',
     tag: 'Bug Bounty',

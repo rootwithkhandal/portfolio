@@ -9,14 +9,13 @@ interface Props {
   externalUrl: string;
   externalLabel: string;
   htmlContent: string;
-  fetchFailed?: boolean;
 }
 
 const {
   title, tag, tagColor, meta,
   backHref, backLabel,
   externalUrl, externalLabel,
-  htmlContent, fetchFailed = false,
+  htmlContent,
 } = Astro.props;
 ---
 
@@ -58,17 +57,6 @@ const {
     <p class="post-meta">{meta}</p>
     <h1 class="post-title">{title}</h1>
   </div>
-
-  {fetchFailed && (
-    <div class="fetch-notice">
-      <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.2"/>
-        <path d="M10 6v4M10 13h.01" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-      </svg>
-      Content could not be fetched at build time.
-      <a href={externalUrl} target="_blank" rel="noopener noreferrer">Read it directly →</a>
-    </div>
-  )}
 
   <article class="prose" set:html={htmlContent} />
 </main>
@@ -221,25 +209,6 @@ const {
     line-height: 1.05;
     color: var(--text);
   }
-
-  /* Fetch notice */
-  .fetch-notice {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-family: var(--font-body);
-    font-size: 0.82rem;
-    color: var(--muted);
-    background: rgba(255,152,0,0.06);
-    border: 1px solid rgba(255,152,0,0.2);
-    border-radius: 3px;
-    padding: 12px 16px;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-  }
-  .fetch-notice svg { width: 16px; height: 16px; color: #ff9800; flex-shrink: 0; }
-  .fetch-notice a { color: var(--accent); text-decoration: none; }
-  .fetch-notice a:hover { text-decoration: underline; }
 
   /* Prose styles */
   .prose {

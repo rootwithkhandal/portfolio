@@ -1,7 +1,7 @@
 ---
-import { blogs } from '../../data/blogs';
+import { researches } from '../../data/researches';
 
-const tags = ['All', ...new Set(blogs.map(b => b.tag))];
+const tags = ['All', ...new Set(researches.map(b => b.tag))];
 ---
 
 <!DOCTYPE html>
@@ -9,9 +9,9 @@ const tags = ['All', ...new Set(blogs.map(b => b.tag))];
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blogs · Priyansh Khandal</title>
+  <title>Researches · Priyansh Khandal</title>
   <meta name="description" content="Field notes on bug bounty, blockchain auditing, AI red-teaming, SOC operations, and OPSEC by Priyansh Khandal." />
-  <link rel="canonical" href="https://khandal.tech/blogs" />
+  <link rel="canonical" href="https://khandal.tech/researches" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;600;700&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -25,7 +25,7 @@ const tags = ['All', ...new Set(blogs.map(b => b.tag))];
       <a href="/">Home</a>
       <a href="/#profile">Profile</a>
       <a href="/projects">Projects</a>
-      <a href="/blogs" class="active">Blogs</a>
+      <a href="/researches" class="active">Researches</a>
       <a href="/#contact">Contact</a>
     </nav>
     <a
@@ -48,7 +48,7 @@ const tags = ['All', ...new Set(blogs.map(b => b.tag))];
         Writing
       </div>
       <h1 class="page-title">Field Notes</h1>
-      <p class="page-sub">{blogs.length} articles on offensive security, blockchain auditing, AI red-teaming, and OPSEC.</p>
+      <p class="page-sub">{researches.length} articles on offensive security, blockchain auditing, AI red-teaming, and OPSEC.</p>
     </div>
 
     <!-- Filter tabs -->
@@ -60,22 +60,22 @@ const tags = ['All', ...new Set(blogs.map(b => b.tag))];
       ))}
     </div>
 
-    <!-- Blog grid -->
-    <div class="blogs-grid" id="blogsGrid">
-      {blogs.map(blog => (
-        <a href={`/blogs/${blog.slug}`} class="blog-card" data-tag={blog.tag}>
+    <!-- Research grid -->
+    <div class="researches-grid" id="researchesGrid">
+      {researches.map(research => (
+        <a href={`/researches/${research.slug}`} class="research-card" data-tag={research.tag}>
           <div class="card-top">
             <span
               class="card-tag"
-              style={`color:${blog.tagColor};border-color:${blog.tagColor}28;background:${blog.tagColor}0d`}
+              style={`color:${research.tagColor};border-color:${research.tagColor}28;background:${research.tagColor}0d`}
             >
-              {blog.tag}
+              {research.tag}
             </span>
-            <span class="card-meta">{blog.date} · {blog.readTime} read</span>
+            <span class="card-meta">{research.date} · {research.readTime} read</span>
           </div>
 
-          <h2 class="card-title">{blog.title}</h2>
-          <p class="card-excerpt">{blog.excerpt}</p>
+          <h2 class="card-title">{research.title}</h2>
+          <p class="card-excerpt">{research.excerpt}</p>
 
           <div class="card-footer">
             <span class="card-read">Read Article</span>
@@ -106,7 +106,7 @@ const tags = ['All', ...new Set(blogs.map(b => b.tag))];
 
 <script>
   const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
-  const cards      = document.querySelectorAll<HTMLElement>('.blog-card');
+  const cards      = document.querySelectorAll<HTMLElement>('.research-card');
   const empty      = document.getElementById('emptyState')!;
 
   filterBtns.forEach(btn => {
@@ -300,14 +300,14 @@ const tags = ['All', ...new Set(blogs.map(b => b.tag))];
   }
 
   /* Grid */
-  .blogs-grid {
+  .researches-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 16px;
   }
 
   /* Card */
-  .blog-card {
+  .research-card {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -321,7 +321,7 @@ const tags = ['All', ...new Set(blogs.map(b => b.tag))];
     overflow: hidden;
     transition: border-color 0.3s, transform 0.3s, background 0.3s;
   }
-  .blog-card:hover {
+  .research-card:hover {
     border-color: rgba(79,195,247,0.3);
     background: rgba(79,195,247,0.02);
     transform: translateY(-4px);
@@ -336,7 +336,7 @@ const tags = ['All', ...new Set(blogs.map(b => b.tag))];
   }
   .corner.tl { top: 0; left: 0;     border-width: 1px 0 0 1px; }
   .corner.br { bottom: 0; right: 0; border-width: 0 1px 1px 0; }
-  .blog-card:hover .corner { border-color: rgba(79,195,247,0.5); }
+  .research-card:hover .corner { border-color: rgba(79,195,247,0.5); }
 
   .card-top {
     display: flex;
@@ -374,7 +374,7 @@ const tags = ['All', ...new Set(blogs.map(b => b.tag))];
     color: var(--text);
     transition: color 0.2s;
   }
-  .blog-card:hover .card-title { color: var(--accent); }
+  .research-card:hover .card-title { color: var(--accent); }
 
   .card-excerpt {
     font-family: var(--font-body);
@@ -402,7 +402,7 @@ const tags = ['All', ...new Set(blogs.map(b => b.tag))];
     opacity: 0.55;
     transition: opacity 0.2s;
   }
-  .blog-card:hover .card-read { opacity: 1; }
+  .research-card:hover .card-read { opacity: 1; }
 
   .card-arrow {
     width: 13px; height: 13px;
@@ -411,7 +411,7 @@ const tags = ['All', ...new Set(blogs.map(b => b.tag))];
     transition: opacity 0.2s, transform 0.2s;
     flex-shrink: 0;
   }
-  .blog-card:hover .card-arrow { opacity: 1; transform: translateX(3px); }
+  .research-card:hover .card-arrow { opacity: 1; transform: translateX(3px); }
 
   .empty {
     text-align: center;
@@ -442,7 +442,7 @@ const tags = ['All', ...new Set(blogs.map(b => b.tag))];
 
   @media (max-width: 768px) {
     nav { display: none; }
-    .blogs-grid { grid-template-columns: 1fr; }
+    .researches-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 480px) {
     footer { justify-content: center; text-align: center; }

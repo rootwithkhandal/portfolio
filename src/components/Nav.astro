@@ -3,7 +3,7 @@ const links = [
   { href: '#hero',      label: 'Home',     section: 'hero' },
   { href: '#profile',   label: 'Profile',  section: 'profile' },
   { href: '#projects',  label: 'Projects', section: 'projects' },
-  { href: '#blogs',     label: 'Blogs',    section: 'blogs' },
+  { href: '#researches',     label: 'Researches',    section: 'researches' },
   { href: '#contact',   label: 'Contact',  section: 'contact' },
 ];
 ---
@@ -35,76 +35,84 @@ const links = [
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 clamp(1rem, 4vw, 2.5rem);
+    padding: 0 clamp(1.5rem, 5vw, 4rem);
     z-index: 200;
-    background: rgba(6,12,20,0.75);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom: 0.5px solid var(--border);
+    background: rgba(6,12,20,0.4);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid transparent;
+    transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+  nav.scrolled {
+    background: rgba(6,12,20,0.85);
+    border-bottom: 1px solid rgba(79,195,247,0.15);
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+    height: calc(var(--nav-h) - 10px);
   }
 
   .logo {
     font-family: var(--font-display);
-    font-size: clamp(1.2rem, 3vw, 1.6rem);
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
     letter-spacing: 0.08em;
-    color: var(--accent);
-    text-shadow: 0 0 20px rgba(79,195,247,0.4);
+    color: var(--text);
+    position: relative;
     flex-shrink: 0;
+    transition: color 0.3s;
+    cursor: pointer;
+  }
+  .logo:hover {
+    color: var(--accent);
+    text-shadow: 0 0 20px rgba(79,195,247,0.5);
   }
 
   .nav-links {
     display: flex;
-    gap: clamp(1rem, 3vw, 2rem);
+    gap: clamp(0.5rem, 2vw, 1rem);
     list-style: none;
+    align-items: center;
   }
 
   .nav-links a {
     font-family: var(--font-label);
-    font-size: clamp(0.7rem, 1.5vw, 0.8rem);
-    letter-spacing: 0.2em;
+    font-size: clamp(0.75rem, 1.5vw, 0.85rem);
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--muted);
     text-decoration: none;
     position: relative;
-    transition: color 0.3s;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
     white-space: nowrap;
   }
   .nav-links a.active,
-  .nav-links a:hover { color: var(--accent); }
-
-  .nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -4px; left: 0; right: 0;
-    height: 1px;
-    background: var(--accent);
-    transform: scaleX(0);
-    transition: transform 0.3s;
-    transform-origin: left;
+  .nav-links a:hover { 
+    color: var(--accent);
+    background: rgba(79,195,247,0.1);
   }
-  .nav-links a.active::after,
-  .nav-links a:hover::after { transform: scaleX(1); }
 
   /* Hamburger */
   .nav-toggle {
     display: none;
     flex-direction: column;
-    gap: 5px;
+    gap: 6px;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 4px;
+    padding: 8px;
     z-index: 201;
   }
   .nav-toggle span {
     display: block;
-    width: 22px; height: 1.5px;
-    background: var(--accent);
-    transition: transform 0.3s, opacity 0.3s;
+    width: 24px; height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.4s, background 0.3s;
   }
-  .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-toggle:hover span { background: var(--accent); }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); background: var(--accent); }
   .nav-toggle.open span:nth-child(2) { opacity: 0; }
-  .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); background: var(--accent); }
 
   /* Mobile nav drawer */
   @media (max-width: 599px) {
@@ -112,50 +120,83 @@ const links = [
 
     .nav-links {
       position: fixed;
-      top: var(--nav-h); left: 0; right: 0;
-      background: rgba(6,12,20,0.97);
-      backdrop-filter: blur(16px);
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(6,12,20,0.98);
+      backdrop-filter: blur(20px);
       flex-direction: column;
-      align-items: center;
-      gap: 0;
+      justify-content: center;
+      gap: 2rem;
       padding: 0;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s cubic-bezier(0.16,1,0.3,1),
-                  padding 0.3s;
-      border-bottom: 0.5px solid var(--border);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      z-index: -1;
     }
     .nav-links.open {
-      max-height: 300px;
-      padding: 1.5rem 0;
+      opacity: 1;
+      pointer-events: auto;
     }
-    .nav-links li { width: 100%; text-align: center; }
+    .nav-links li { 
+      width: 100%; 
+      text-align: center;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .nav-links.open li {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    /* Staggered entry */
+    .nav-links.open li:nth-child(1) { transition-delay: 0.1s; }
+    .nav-links.open li:nth-child(2) { transition-delay: 0.15s; }
+    .nav-links.open li:nth-child(3) { transition-delay: 0.2s; }
+    .nav-links.open li:nth-child(4) { transition-delay: 0.25s; }
+    .nav-links.open li:nth-child(5) { transition-delay: 0.3s; }
+
     .nav-links a {
-      display: block;
-      padding: 0.75rem 2rem;
-      font-size: 0.85rem;
-      letter-spacing: 0.25em;
+      display: inline-block;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      letter-spacing: 0.3em;
     }
-    .nav-links a::after { display: none; }
+    .nav-links a.active, .nav-links a:hover {
+      background: transparent;
+      color: var(--accent);
+      text-shadow: 0 0 15px rgba(79,195,247,0.4);
+    }
   }
 </style>
 
 <script>
+  const nav = document.querySelector('nav');
   const toggle = document.querySelector('.nav-toggle') as HTMLButtonElement;
   const menu   = document.querySelector('.nav-links') as HTMLUListElement;
 
+  // Scroll effect
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      nav?.classList.add('scrolled');
+    } else {
+      nav?.classList.remove('scrolled');
+    }
+  }, { passive: true });
+
+  // Mobile menu toggle
   toggle?.addEventListener('click', () => {
     const open = menu.classList.toggle('open');
     toggle.classList.toggle('open', open);
     toggle.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
   });
 
-  // close on link click
+  // Close on link click
   menu?.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
       menu.classList.remove('open');
       toggle?.classList.remove('open');
       toggle?.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
     });
   });
 </script>

@@ -1,0 +1,32 @@
+---
+import { marked } from 'marked';
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { researches } from '../../data/researches';
+
+// Import all research markdown files at build time — no fs/path needed
+const mdFiles = import.meta.glob('../../data/researches/*.md', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
+
+export async function getStaticPaths() {
+  return researches.map(b => ({ params: { slug: b.slug } }));
+}
+
+const { slug } = Astro.params;
+const research = researches.find(b => b.slug === slug)!;
+
+const raw = mdFiles[`../../data/researches/${slug}.md`];
+const htmlContent = raw
+  ? await marked.parse(raw)
+  : await marked.parse(`## ${research.title}\n\n${research.excerpt}\n\n> Content coming soon.\n\n[Read on GitBook →](${research.gitbookUrl})`);
+---
+
+<ContentLayout
+  title={research.title}
+  tag={research.tag}
+  tagColor={research.tagColor}
+  meta={`${research.date} · ${research.readTime} read`}
+  backHref="/researches"
+  backLabel="Researches"
+  externalUrl={research.gitbookUrl}
+  externalLabel="Open in GitBook"
+  htmlContent={htmlContent}
+/>
