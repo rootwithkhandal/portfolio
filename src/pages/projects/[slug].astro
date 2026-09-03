@@ -1,0 +1,36 @@
+---
+import { marked } from 'marked';
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { projects } from '../../data/projects';
+
+// Import all project markdown files at build time — no fs/path needed
+const mdFiles = import.meta.glob('../../data/projects/*.md', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
+
+export async function getStaticPaths() {
+  return projects.map(p => ({ params: { slug: p.slug } }));
+}
+
+const { slug } = Astro.params;
+const project = projects.find(p => p.slug === slug)!;
+
+const raw = mdFiles[`../../data/projects/${slug}.md`];
+const repoName = project.githubRepo.split('/')[1] ?? slug;
+const githubUrl = `https://github.com/rootwithkhandal/${repoName}`;
+
+const htmlContent = raw
+  ? await marked.parse(raw)
+  : await marked.parse(`## ${project.title}\n\n${project.excerpt}\n\n> Content coming soon.`);
+---
+
+<ContentLayout
+  title={project.title}
+  tag={project.tag}
+  tagColor={project.tagColor}
+  meta={`GitHub · rootwithkhandal / ${repoName}`}
+  backHref="/projects"
+  backLabel="Projects"
+  externalUrl={githubUrl}
+  externalLabel="View on GitHub"
+  htmlContent={htmlContent}
+  fetchFailed={!raw}
+/>

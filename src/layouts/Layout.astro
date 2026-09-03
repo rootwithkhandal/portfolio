@@ -1,0 +1,294 @@
+---
+interface Props {
+  title?:       string;
+  description?: string;
+  canonical?:   string;
+}
+const {
+  title       = 'Priyansh Khandal · Cybersecurity Portfolio',
+  description = 'Priyansh Khandal — Cybersecurity student, SOC analyst, and penetration tester specialising in bug bounty, AI red-teaming, crypto investigations,and blockchain smart contract auditing.',
+  canonical   = 'https://khandal.tech',
+} = Astro.props;
+
+const ogImage = `${canonical}/profile.png`;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary SEO -->
+  <title>{title}</title>
+  <meta name="description"        content={description} />
+  <meta name="author"             content="Priyansh Khandal" />
+  <meta name="keywords"           content="Priyansh Khandal, cybersecurity, penetration testing, bug bounty, SOC analyst, blockchain audit, AI red-team, NixOS, portfolio" />
+  <link rel="canonical"           href={canonical} />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content={canonical} />
+  <meta property="og:title"       content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image"       content={ogImage} />
+  <meta property="og:site_name"   content="Priyansh Khandal" />
+  <meta property="og:locale"      content="en_US" />
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image"       content={ogImage} />
+
+  <!-- Structured data (Person) -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Priyansh Khandal",
+    "url": canonical,
+    "jobTitle": "Cybersecurity Researcher · SOC Analyst · Penetration Tester",
+    "sameAs": [
+      "https://github.com/rootwithkhandal",
+      "https://linkedin.com/in/priyansh-khandal",
+      "https://tryhackme.com/p/rootwithkhandal"
+    ]
+  })} />
+
+  <!-- Robots -->
+  <meta name="robots" content="index, follow" />
+
+  <!-- Theme colour (browser chrome) -->
+  <meta name="theme-color" content="#060c14" />
+
+  <!-- Favicon -->
+  <link rel="icon"             href="/favicon.svg"          type="image/svg+xml" />
+  <link rel="icon"             href="/favicon.ico"          sizes="any" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.svg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <slot />
+</body>
+</html>
+
+<style is:global>
+  /* ── Reset ── */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* ── Design tokens ── */
+  :root {
+    --bg:      #060c14;
+    --bg2:     #0a1220;
+    --bg3:     #0d1828;
+    --accent:  #4fc3f7;
+    --accent2: #e53935;
+    --text:    #e8eaf0;
+    --muted:   #6b7a8d;
+    --border:  rgba(79,195,247,0.15);
+    --nav-h:   60px;
+
+    /* Font roles */
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-label:   'Rajdhani', sans-serif;
+    --font-body:    'Space Grotesk', sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 110%;   /* +10% base — all rem/em values scale automatically */
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    cursor: none;           /* hide default — custom cursor active on pointer devices */
+  }
+
+  /* ── Custom cursor (pointer devices only) ── */
+  .cursor {
+    position: fixed;
+    width: 10px; height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    left: -100px; top: -100px;   /* off-screen until first mousemove */
+    transform: translate(-50%, -50%);
+    transition: width 0.18s, height 0.18s, opacity 0.18s, background 0.18s;
+    mix-blend-mode: screen;
+    will-change: left, top;
+  }
+  .cursor-ring {
+    position: fixed;
+    width: 36px; height: 36px;
+    border: 1.5px solid rgba(79,195,247,0.55);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    left: -100px; top: -100px;
+    transform: translate(-50%, -50%);
+    transition: width 0.22s, height 0.22s, border-color 0.22s;
+    will-change: left, top;
+  }
+  /* hide cursor elements on touch devices */
+  @media (hover: none) {
+    .cursor, .cursor-ring { display: none; }
+    body { cursor: auto; }
+  }
+
+  /* ── Shared section shell ── */
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(1rem, 5vw, 3rem);
+  }
+
+  /* ── Section labels & titles ── */
+  .section-label {
+    font-family: var(--font-label);
+    font-size: clamp(0.6rem, 1.5vw, 0.7rem);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 30px; height: 1px;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    letter-spacing: 0.03em;
+    line-height: 1;
+    margin-bottom: 3rem;
+  }
+
+  /* ── Scroll-triggered fade-up ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1),
+                transform 0.75s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* stagger delays */
+  .reveal.d1 { transition-delay: 0.05s; }
+  .reveal.d2 { transition-delay: 0.15s; }
+  .reveal.d3 { transition-delay: 0.25s; }
+  .reveal.d4 { transition-delay: 0.35s; }
+  .reveal.d5 { transition-delay: 0.45s; }
+  .reveal.d6 { transition-delay: 0.55s; }
+  .reveal.d7 { transition-delay: 0.65s; }
+  .reveal.d8 { transition-delay: 0.75s; }
+
+  /* hero items animate immediately on load (no JS needed) */
+  .fade-up {
+    opacity: 0;
+    animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .fade-up.d1 { animation-delay: 0.1s; }
+  .fade-up.d2 { animation-delay: 0.25s; }
+  .fade-up.d3 { animation-delay: 0.4s; }
+  .fade-up.d4 { animation-delay: 0.55s; }
+  .fade-up.d5 { animation-delay: 0.7s; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Shared keyframes ── */
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.4; transform: scale(1.4); }
+  }
+  @keyframes scan {
+    0%   { top: 0; }
+    100% { top: 100%; }
+  }
+
+  /* ── Responsive breakpoints ──
+     smartwatch  : ≤ 200px
+     xs phone    : 201–359px
+     phone       : 360–599px
+     tablet      : 600–899px
+     ipad        : 900–1023px
+     laptop      : 1024–1279px
+     desktop     : 1280–1535px
+     wide        : ≥ 1536px
+  ── */
+
+  /* Tablet & below: single-column grids */
+  @media (max-width: 899px) {
+    .hero-grid    { grid-template-columns: 1fr !important; }
+    .profile-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
+    .contact-grid { grid-template-columns: 1fr !important; }
+    .hero-right   { display: none !important; }
+    .profile-meta { grid-template-columns: 1fr !important; }
+    .profile-meta .meta-block[style] { grid-column: span 1 !important; }
+  }
+
+  /* Project grid: 2-col on tablet */
+  @media (max-width: 899px) {
+    .project-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      grid-template-rows: repeat(4, 160px) !important;
+    }
+    .project-card.span-h { grid-column: span 1 !important; }
+    .project-card.span-v { grid-row: span 1 !important; }
+  }
+
+  /* Phone: 1-col project grid */
+  @media (max-width: 599px) {
+    .project-grid {
+      grid-template-columns: 1fr !important;
+      grid-template-rows: auto !important;
+    }
+    .project-card { min-height: 140px; }
+    .nav-links { gap: 1rem !important; }
+    .nav-links a { font-size: 0.7rem !important; letter-spacing: 0.12em !important; }
+  }
+
+  /* Smartwatch / tiny screens */
+  @media (max-width: 200px) {
+    :root { --nav-h: 44px; }
+    nav { padding: 0 0.5rem !important; }
+    .nav-links { display: none !important; }
+    .section-inner { padding: 0 0.5rem !important; }
+    #hero, #profile, #projects, #contact { padding: 3rem 0 !important; }
+    footer { flex-direction: column; gap: 0.5rem; padding: 1rem 0.5rem !important; }
+    .contact-right { display: none !important; }
+  }
+
+  /* XS phone */
+  @media (max-width: 359px) {
+    .hero-name { font-size: clamp(2.8rem, 14vw, 4rem) !important; }
+    .contact-title { font-size: clamp(2.2rem, 12vw, 3.5rem) !important; }
+    .profile-info h2 { font-size: 2rem !important; }
+    .skills-icons { gap: 6px !important; }
+    .skill-pill { padding: 5px 10px !important; font-size: 0.72rem !important; }
+  }
+
+  /* Wide desktop */
+  @media (min-width: 1536px) {
+    .section-inner { max-width: 1400px; }
+    .hero-grid { max-width: 1400px !important; }
+  }
+</style>

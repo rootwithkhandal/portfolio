@@ -1,0 +1,9 @@
+---
+import ErrorLayout from '../layouts/ErrorLayout.astro';
+---
+<ErrorLayout
+  code={401}
+  title="Unauthorized"
+  message="Authentication is required to access this resource. You need valid credentials before you can proceed. No token, no entry."
+  hint="Authenticate first, then try again"
+/>

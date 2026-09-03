@@ -1,0 +1,33 @@
+---
+import { marked } from 'marked';
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { blogs } from '../../data/blogs';
+
+// Import all blog markdown files at build time — no fs/path needed
+const mdFiles = import.meta.glob('../../data/blogs/*.md', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
+
+export async function getStaticPaths() {
+  return blogs.map(b => ({ params: { slug: b.slug } }));
+}
+
+const { slug } = Astro.params;
+const blog = blogs.find(b => b.slug === slug)!;
+
+const raw = mdFiles[`../../data/blogs/${slug}.md`];
+const htmlContent = raw
+  ? await marked.parse(raw)
+  : await marked.parse(`## ${blog.title}\n\n${blog.excerpt}\n\n> Content coming soon.\n\n[Read on GitBook →](${blog.gitbookUrl})`);
+---
+
+<ContentLayout
+  title={blog.title}
+  tag={blog.tag}
+  tagColor={blog.tagColor}
+  meta={`${blog.date} · ${blog.readTime} read`}
+  backHref="/blogs"
+  backLabel="Blogs"
+  externalUrl={blog.gitbookUrl}
+  externalLabel="Open in GitBook"
+  htmlContent={htmlContent}
+  fetchFailed={!raw}
+/>

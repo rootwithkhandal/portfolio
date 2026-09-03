@@ -1,0 +1,9 @@
+---
+import ErrorLayout from '../layouts/ErrorLayout.astro';
+---
+<ErrorLayout
+  code={405}
+  title="Method Not Allowed"
+  message="The HTTP method used in this request is not supported for this endpoint. The server knows what you're trying to do — it just won't allow it that way."
+  hint="Try a different request method"
+/>

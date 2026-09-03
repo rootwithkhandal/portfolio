@@ -1,0 +1,188 @@
+---
+const links = [
+  {
+    href: 'https://github.com/rootwithkhandal',
+    platform: 'GitHub',
+    handle: 'github.com/rootwithkhandal',
+    svg: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>`,
+  },
+  {
+    href: 'https://linkedin.com/in/priyanshkhandal',
+    platform: 'LinkedIn',
+    handle: 'priyanshkhandal',
+    svg: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>`,
+  },
+  {
+    href: 'https://tryhackme.com/p/rootwithkhandal',
+    platform: 'TryHackMe',
+    handle: 'rootwithkhandal',
+    svg: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10.705 0C8.53 0 6.647 1.383 5.82 3.35a4.233 4.233 0 0 0-.828-.082 4.256 4.256 0 0 0-4.256 4.256 4.256 4.256 0 0 0 4.256 4.256h9.013a3.633 3.633 0 0 0 3.633-3.633 3.633 3.633 0 0 0-3.633-3.633 3.62 3.62 0 0 0-.424.025C13.14 1.78 12.07 0 10.705 0zm-.234 13.3a5.997 5.997 0 0 0-5.997 5.998A5.997 5.997 0 0 0 10.47 25.3a5.997 5.997 0 0 0 5.998-5.997 5.997 5.997 0 0 0-5.997-5.998v-.005zm0 1.95a4.048 4.048 0 0 1 4.048 4.048 4.048 4.048 0 0 1-4.048 4.047 4.048 4.048 0 0 1-4.047-4.047 4.048 4.048 0 0 1 4.047-4.048z"/></svg>`,
+  },
+  {
+    href: 'mailto:contact@khandal.me',
+    platform: 'Email',
+    handle: 'contact@khandal.me',
+    svg: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>`,
+  },
+];
+---
+
+<div id="contact">
+  <div class="section-inner">
+    <div class="section-label reveal d1">Contact</div>
+
+    <div class="contact-grid">
+      <div class="contact-left">
+        <div class="contact-title reveal d2">
+          LET'S<br />TALK
+          <span class="year">SECURITY</span>
+        </div>
+
+        <div class="contact-links">
+          {links.map(({ href, platform, handle, svg }, i) => (
+            <a href={href} class={`contact-link reveal d${i + 2}`}>
+              <div class="contact-icon" set:html={svg} />
+              <div class="contact-link-info">
+                <div class="contact-link-platform">{platform}</div>
+                <div class="contact-link-handle">{handle}</div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div class="contact-right reveal d3">
+        <div class="contact-avatar-wrap">
+          <img src="/profile.png" alt="Priyansh Khandal" class="contact-avatar-img" />
+        </div>
+        <p class="contact-role">Priyansh Khandal · Security Researcher</p>
+        <div class="thank-you">HACK<br />THE<br />PLANET</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  #contact {
+    background: var(--bg);
+    padding: clamp(4rem, 8vw, 6rem) 0;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: start;
+    margin-top: 2rem;
+  }
+
+  .contact-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 7vw, 6rem);
+    letter-spacing: 0.03em;
+    line-height: 0.95;
+    margin-bottom: 2rem;
+  }
+  .contact-title .year {
+    display: block;
+    color: rgba(255,255,255,0.1);
+    font-size: 1.2em;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    padding: 12px 16px;
+    border: 0.5px solid rgba(255,255,255,0.07);
+    border-radius: 3px;
+    background: rgba(255,255,255,0.02);
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  }
+  .contact-link:hover {
+    background: rgba(79,195,247,0.05);
+    border-color: rgba(79,195,247,0.25);
+    transform: translateX(6px);
+  }
+
+  .contact-icon {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(79,195,247,0.08);
+    border: 1px solid rgba(79,195,247,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-icon :global(svg) { width: 16px; height: 16px; fill: var(--accent); }
+
+  .contact-link-platform {
+    font-family: var(--font-label);
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .contact-link-handle {
+    font-family: var(--font-body);
+    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* Right side */
+  .contact-right { padding-top: 2rem; }
+
+  .contact-avatar-wrap {
+    width: clamp(120px, 15vw, 180px);
+    height: clamp(120px, 15vw, 180px);
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  .contact-role {
+    font-family: var(--font-label);
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+  .thank-you {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 3.5rem);
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.12);
+    line-height: 1;
+    margin-top: 1rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 899px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-right { display: flex; flex-direction: column; align-items: flex-start; padding-top: 0; }
+  }
+  @media (max-width: 599px) {
+    .contact-link { padding: 10px 12px; }
+    .contact-link-handle { font-size: 0.8rem; word-break: break-all; }
+  }
+</style>

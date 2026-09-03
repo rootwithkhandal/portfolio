@@ -1,0 +1,161 @@
+---
+const links = [
+  { href: '#hero',      label: 'Home',     section: 'hero' },
+  { href: '#profile',   label: 'Profile',  section: 'profile' },
+  { href: '#projects',  label: 'Projects', section: 'projects' },
+  { href: '#blogs',     label: 'Blogs',    section: 'blogs' },
+  { href: '#contact',   label: 'Contact',  section: 'contact' },
+];
+---
+
+<nav id="main-nav">
+  <div class="logo">0x</div>
+
+  <!-- hamburger for mobile -->
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+
+  <ul class="nav-links">
+    {links.map(({ href, label, section }) => (
+      <li>
+        <a href={href} data-section={section} class={section === 'hero' ? 'active' : ''}>
+          {label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--nav-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 clamp(1rem, 4vw, 2.5rem);
+    z-index: 200;
+    background: rgba(6,12,20,0.75);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .logo {
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    text-shadow: 0 0 20px rgba(79,195,247,0.4);
+    flex-shrink: 0;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: clamp(1rem, 3vw, 2rem);
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--font-label);
+    font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s;
+    white-space: nowrap;
+  }
+  .nav-links a.active,
+  .nav-links a:hover { color: var(--accent); }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0; right: 0;
+    height: 1px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+    transform-origin: left;
+  }
+  .nav-links a.active::after,
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  /* Hamburger */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 201;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 22px; height: 1.5px;
+    background: var(--accent);
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* Mobile nav drawer */
+  @media (max-width: 599px) {
+    .nav-toggle { display: flex; }
+
+    .nav-links {
+      position: fixed;
+      top: var(--nav-h); left: 0; right: 0;
+      background: rgba(6,12,20,0.97);
+      backdrop-filter: blur(16px);
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.16,1,0.3,1),
+                  padding 0.3s;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .nav-links.open {
+      max-height: 300px;
+      padding: 1.5rem 0;
+    }
+    .nav-links li { width: 100%; text-align: center; }
+    .nav-links a {
+      display: block;
+      padding: 0.75rem 2rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.25em;
+    }
+    .nav-links a::after { display: none; }
+  }
+</style>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle') as HTMLButtonElement;
+  const menu   = document.querySelector('.nav-links') as HTMLUListElement;
+
+  toggle?.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+
+  // close on link click
+  menu?.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      menu.classList.remove('open');
+      toggle?.classList.remove('open');
+      toggle?.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>

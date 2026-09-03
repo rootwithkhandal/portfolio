@@ -1,0 +1,367 @@
+---
+interface Props {
+  title: string;
+  tag: string;
+  tagColor: string;
+  meta: string;          // e.g. "Mar 2026 · 8 min read"  or  "GitHub · rootwithkhandal"
+  backHref: string;
+  backLabel: string;
+  externalUrl: string;
+  externalLabel: string;
+  htmlContent: string;
+  fetchFailed?: boolean;
+}
+
+const {
+  title, tag, tagColor, meta,
+  backHref, backLabel,
+  externalUrl, externalLabel,
+  htmlContent, fetchFailed = false,
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title} · Priyansh Khandal</title>
+  <meta name="description" content={title} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+
+<header>
+  <a href="/" class="logo">0x</a>
+  <nav>
+    <a href={backHref} class="back-link">
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M10 4L6 8l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      {backLabel}
+    </a>
+    <a href={externalUrl} target="_blank" rel="noopener noreferrer" class="external-link">
+      {externalLabel}
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </nav>
+</header>
+
+<main>
+  <div class="post-header">
+    <span class="post-tag" style={`color:${tagColor};border-color:${tagColor}30;background:${tagColor}0d`}>{tag}</span>
+    <p class="post-meta">{meta}</p>
+    <h1 class="post-title">{title}</h1>
+  </div>
+
+  {fetchFailed && (
+    <div class="fetch-notice">
+      <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M10 6v4M10 13h.01" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      Content could not be fetched at build time.
+      <a href={externalUrl} target="_blank" rel="noopener noreferrer">Read it directly →</a>
+    </div>
+  )}
+
+  <article class="prose" set:html={htmlContent} />
+</main>
+
+<footer>
+  <a href={backHref} class="back-link">← Back to {backLabel}</a>
+  <span>Priyansh Khandal · 2026</span>
+</footer>
+
+</body>
+</html>
+
+<style is:global>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg:     #060c14;
+    --bg2:    #0a1220;
+    --accent: #4fc3f7;
+    --text:   #e8eaf0;
+    --muted:  #6b7a8d;
+    --border: rgba(79,195,247,0.15);
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-label:   'Rajdhani', sans-serif;
+    --font-body:    'Space Grotesk', sans-serif;
+  }
+
+  html { font-size: 110%; scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Header */
+  header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 clamp(1rem, 5vw, 3rem);
+    height: 60px;
+    background: rgba(6,12,20,0.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 0.5px solid var(--border);
+    z-index: 100;
+    gap: 1rem;
+  }
+
+  .logo {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    text-decoration: none;
+    text-shadow: 0 0 20px rgba(79,195,247,0.4);
+    flex-shrink: 0;
+  }
+
+  header nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-label);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--accent); }
+  .back-link svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+  .external-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-label);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 5px 12px;
+    border: 1px solid rgba(79,195,247,0.3);
+    border-radius: 2px;
+    background: rgba(79,195,247,0.05);
+    transition: background 0.2s, border-color 0.2s;
+    white-space: nowrap;
+  }
+  .external-link:hover {
+    background: rgba(79,195,247,0.12);
+    border-color: rgba(79,195,247,0.6);
+  }
+  .external-link svg { width: 12px; height: 12px; flex-shrink: 0; }
+
+  /* Main */
+  main {
+    flex: 1;
+    max-width: 780px;
+    width: 100%;
+    margin: 0 auto;
+    padding: clamp(2.5rem, 6vw, 4rem) clamp(1rem, 5vw, 2rem);
+  }
+
+  /* Post header */
+  .post-header {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .post-tag {
+    display: inline-block;
+    font-family: var(--font-label);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 2px;
+    border: 1px solid;
+    margin-bottom: 1rem;
+  }
+
+  .post-meta {
+    font-family: var(--font-label);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  .post-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    letter-spacing: 0.03em;
+    line-height: 1.05;
+    color: var(--text);
+  }
+
+  /* Fetch notice */
+  .fetch-notice {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    color: var(--muted);
+    background: rgba(255,152,0,0.06);
+    border: 1px solid rgba(255,152,0,0.2);
+    border-radius: 3px;
+    padding: 12px 16px;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .fetch-notice svg { width: 16px; height: 16px; color: #ff9800; flex-shrink: 0; }
+  .fetch-notice a { color: var(--accent); text-decoration: none; }
+  .fetch-notice a:hover { text-decoration: underline; }
+
+  /* Prose styles */
+  .prose {
+    font-family: var(--font-body);
+    font-size: clamp(0.88rem, 1.5vw, 0.95rem);
+    color: #c8cdd6;
+    line-height: 1.85;
+  }
+
+  .prose h1, .prose h2, .prose h3, .prose h4 {
+    font-family: var(--font-display);
+    color: var(--text);
+    letter-spacing: 0.03em;
+    margin: 2rem 0 0.75rem;
+    line-height: 1.1;
+  }
+  .prose h1 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+  .prose h2 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); }
+  .prose h3 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
+
+  .prose p { margin-bottom: 1.25rem; }
+
+  .prose a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(79,195,247,0.3);
+    transition: border-color 0.2s;
+  }
+  .prose a:hover { border-color: var(--accent); }
+
+  .prose code {
+    font-family: 'Fira Code', 'Cascadia Code', monospace;
+    font-size: 0.85em;
+    background: rgba(79,195,247,0.08);
+    border: 1px solid rgba(79,195,247,0.15);
+    border-radius: 3px;
+    padding: 1px 6px;
+    color: var(--accent);
+  }
+
+  .prose pre {
+    background: #0a1520;
+    border: 1px solid rgba(79,195,247,0.12);
+    border-radius: 4px;
+    padding: 1.25rem 1.5rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+  .prose pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 0.82rem;
+    color: #a8d8f0;
+  }
+
+  .prose blockquote {
+    border-left: 2px solid var(--accent);
+    padding: 0.5rem 0 0.5rem 1.25rem;
+    margin: 1.5rem 0;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .prose ul, .prose ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .prose li { margin-bottom: 0.4rem; }
+
+  .prose hr {
+    border: none;
+    border-top: 0.5px solid var(--border);
+    margin: 2.5rem 0;
+  }
+
+  .prose img {
+    max-width: 100%;
+    border-radius: 4px;
+    border: 0.5px solid var(--border);
+    margin: 1.5rem 0;
+  }
+
+  .prose table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.85rem;
+  }
+  .prose th, .prose td {
+    padding: 8px 12px;
+    border: 0.5px solid rgba(255,255,255,0.08);
+    text-align: left;
+  }
+  .prose th {
+    font-family: var(--font-label);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 0.65rem;
+    color: var(--accent);
+    background: rgba(79,195,247,0.05);
+  }
+
+  /* Footer */
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1.5rem clamp(1rem, 5vw, 3rem);
+    border-top: 0.5px solid var(--border);
+    font-family: var(--font-label);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  footer .back-link { font-size: 0.65rem; }
+
+  @media (max-width: 480px) {
+    header nav { gap: 0.75rem; }
+    .external-link { padding: 4px 8px; font-size: 0.65rem; }
+  }
+</style>
