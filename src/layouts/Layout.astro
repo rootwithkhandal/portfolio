@@ -3,14 +3,59 @@ interface Props {
   title?:       string;
   description?: string;
   canonical?:   string;
+  extraSchema?: object | object[];
 }
 const {
   title       = 'Priyansh Khandal · Cybersecurity Portfolio',
-  description = 'Priyansh Khandal — Cybersecurity student, SOC analyst, and penetration tester specialising in bug bounty, AI red-teaming, crypto investigations,and blockchain smart contract auditing.',
+  description = 'Priyansh Khandal - Cybersecurity student, SOC analyst, and penetration tester specialising in bug bounty, AI red-teaming, crypto investigations, and blockchain smart contract auditing.',
   canonical   = 'https://khandal.tech',
+  extraSchema,
 } = Astro.props;
 
 const ogImage = `${canonical}/profile.png`;
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `${canonical}/#person`,
+  "name": "Priyansh Khandal",
+  "url": canonical,
+  "email": "mailto:priyansh@khandal.tech",
+  "image": ogImage,
+  "jobTitle": "Cybersecurity Researcher & SOC Analyst",
+  "description": description,
+  "sameAs": [
+    "https://github.com/rootwithkhandal",
+    "https://linkedin.com/in/priyansh-khandal",
+    "https://tryhackme.com/p/rootwithkhandal"
+  ],
+  "knowsAbout": [
+    { "@type": "DefinedTerm", "name": "Cybersecurity", "sameAs": "https://en.wikipedia.org/wiki/Computer_security" },
+    { "@type": "DefinedTerm", "name": "SOC Analysis", "sameAs": "https://en.wikipedia.org/wiki/Security_operations_center" },
+    { "@type": "DefinedTerm", "name": "Penetration Testing", "sameAs": "https://en.wikipedia.org/wiki/Penetration_test" },
+    { "@type": "DefinedTerm", "name": "Bug Bounty", "sameAs": "https://en.wikipedia.org/wiki/Bug_bounty_program" },
+    { "@type": "DefinedTerm", "name": "Smart Contract Auditing", "sameAs": "https://en.wikipedia.org/wiki/Smart_contract" },
+    { "@type": "DefinedTerm", "name": "AI Red-Teaming" },
+    { "@type": "DefinedTerm", "name": "NixOS", "sameAs": "https://en.wikipedia.org/wiki/NixOS" }
+  ]
+};
+
+const profilePageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "mainEntity": { "@id": `${canonical}/#person` },
+  "dateCreated": "2026-01-01T00:00:00Z",
+  "dateModified": new Date().toISOString()
+};
+
+const schemas = [personSchema, profilePageSchema];
+if (extraSchema) {
+  if (Array.isArray(extraSchema)) {
+    schemas.push(...extraSchema);
+  } else {
+    schemas.push(extraSchema);
+  }
+}
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +67,7 @@ const ogImage = `${canonical}/profile.png`;
   <title>{title}</title>
   <meta name="description"        content={description} />
   <meta name="author"             content="Priyansh Khandal" />
-  <meta name="keywords"           content="Priyansh Khandal, cybersecurity, penetration testing, bug bounty, SOC analyst, blockchain audit, AI red-team, NixOS, portfolio" />
+  <meta name="keywords"           content="Priyansh Khandal, cybersecurity, penetration testing, bug bounty, SOC analyst, blockchain audit, AI red-team, NixOS, portfolio, security researcher" />
   <link rel="canonical"           href={canonical} />
 
   <!-- Open Graph -->
@@ -40,19 +85,10 @@ const ogImage = `${canonical}/profile.png`;
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image"       content={ogImage} />
 
-  <!-- Structured data (Person) -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Priyansh Khandal",
-    "url": canonical,
-    "jobTitle": "Cybersecurity Researcher · SOC Analyst · Penetration Tester",
-    "sameAs": [
-      "https://github.com/rootwithkhandal",
-      "https://linkedin.com/in/priyansh-khandal",
-      "https://tryhackme.com/p/rootwithkhandal"
-    ]
-  })} />
+  <!-- Structured data (JSON-LD) -->
+  {schemas.map(s => (
+    <script type="application/ld+json" set:html={JSON.stringify(s)} />
+  ))}
 
   <!-- Robots -->
   <meta name="robots" content="index, follow" />
@@ -71,6 +107,9 @@ const ogImage = `${canonical}/profile.png`;
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet" />
 </head>
 <body>
+  <!-- Ambient Orbs -->
+  <div class="ambient-orb orb-1" aria-hidden="true"></div>
+  <div class="ambient-orb orb-2" aria-hidden="true"></div>
   <slot />
 </body>
 </html>
@@ -101,15 +140,37 @@ const ogImage = `${canonical}/profile.png`;
 
   html {
     scroll-behavior: smooth;
-    font-size: 110%;   /* +10% base — all rem/em values scale automatically */
+    font-size: 110%;   /* +10% base - all rem/em values scale automatically */
   }
 
   body {
     background: var(--bg);
+    background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 24px 24px;
     color: var(--text);
     font-family: var(--font-body);
     overflow-x: hidden;
     cursor: none;           /* hide default — custom cursor active on pointer devices */
+  }
+
+  /* ── Ambient Orbs ── */
+  .ambient-orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: -1;
+  }
+  .orb-1 {
+    top: -150px; left: -100px;
+    width: 450px; height: 450px;
+    background: var(--accent);
+  }
+  .orb-2 {
+    bottom: -200px; right: -150px;
+    width: 600px; height: 600px;
+    background: #008855;
   }
 
   /* ── Custom cursor (pointer devices only) ── */
@@ -228,12 +289,12 @@ const ogImage = `${canonical}/profile.png`;
 
   /* ── Responsive breakpoints ──
      smartwatch  : ≤ 200px
-     xs phone    : 201–359px
-     phone       : 360–599px
-     tablet      : 600–899px
-     ipad        : 900–1023px
-     laptop      : 1024–1279px
-     desktop     : 1280–1535px
+     xs phone    : 201-359px
+     phone       : 360-599px
+     tablet      : 600-899px
+     ipad        : 900-1023px
+     laptop      : 1024-1279px
+     desktop     : 1280-1535px
      wide        : ≥ 1536px
   ── */
 

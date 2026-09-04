@@ -55,7 +55,7 @@ const cardMeta: Record<string, { cls: string; style?: string; svg: string }> = {
     svg: `<svg class="card-deco" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
       <rect x="30" y="40" width="140" height="120" fill="none" stroke="rgba(255,154,0,0.2)" stroke-width="1" rx="3"/>
       <rect x="30" y="40" width="140" height="20"  fill="rgba(255,154,0,0.06)" rx="3"/>
-      <text x="40" y="55" font-size="9" fill="rgba(255,154,0,0.35)" font-family="monospace">SIEM — khandal</text>
+      <text x="40" y="55" font-size="9" fill="rgba(255,154,0,0.35)" font-family="monospace">SIEM - khandal</text>
       <rect x="40" y="72" width="80"  height="6" fill="rgba(255,154,0,0.08)" rx="1"/>
       <rect x="40" y="84" width="110" height="6" fill="rgba(255,154,0,0.06)" rx="1"/>
       <rect x="40" y="96" width="60"  height="6" fill="rgba(255,154,0,0.08)" rx="1"/>
@@ -218,7 +218,10 @@ const cardMeta: Record<string, { cls: string; style?: string; svg: string }> = {
     transition: border-color 0.3s;
     display: block;
   }
-  .project-card:hover { border-color: rgba(0,237,100,0.3); }
+  .project-card:hover { 
+    border-color: rgba(0,237,100,0.3); 
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3), 0 0 0 1px rgba(0,237,100,0.15);
+  }
   .project-card:hover .project-overlay { opacity: 1; }
   .project-card:hover .project-img-bg  { transform: scale(1.05); }
 
@@ -261,7 +264,7 @@ const cardMeta: Record<string, { cls: string; style?: string; svg: string }> = {
     background: rgba(6,12,20,0.7);
     border: 0.5px solid rgba(255,255,255,0.1);
     padding: 3px 8px;
-    border-radius: 6px;
+    border-radius: 4px;
   }
 
   :global(.card-deco) { position: absolute; inset: 0; opacity: 0.6; }

@@ -1,29 +1,27 @@
 import os
-import glob
 
-# Paths to process
-src_dir = '/home/nyx/Projects/portfolio/src'
-files = glob.glob(src_dir + '/**/*.astro', recursive=True) + glob.glob(src_dir + '/**/*.ts', recursive=True)
+files_to_check = [
+    'src/data/researches.ts',
+    'src/data/projects.ts',
+    'src/layouts/Layout.astro',
+    'src/layouts/ErrorLayout.astro',
+    'src/pages/405.astro',
+    'src/pages/403.astro',
+    'src/pages/index.astro',
+    'src/components/Projects.astro'
+]
 
-# Replacements
-replacements = {
-    '#FFC832': '#00ed64',
-    '#FFD95C': '#00b545',
-    'rgba(255,200,50': 'rgba(0,237,100',
-    'rgba(255, 200, 50': 'rgba(0, 237, 100'
-}
-
-for filepath in files:
-    if 'color-scheme-backup.css' in filepath:
+for file_path in files_to_check:
+    if not os.path.exists(file_path):
         continue
-    with open(filepath, 'r') as f:
+    with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
     
-    new_content = content
-    for old, new in replacements.items():
-        new_content = new_content.replace(old, new)
+    # Replace em dash with spaced hyphen, and en dash with hyphen
+    new_content = content.replace('—', '-').replace('–', '-')
     
-    if new_content != content:
-        with open(filepath, 'w') as f:
+    if content != new_content:
+        with open(file_path, 'w', encoding='utf-8') as f:
             f.write(new_content)
-        print(f"Updated {filepath}")
+        print(f"Updated {file_path}")
+

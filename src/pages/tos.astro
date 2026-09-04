@@ -1,0 +1,35 @@
+---
+import ContentLayout from '../layouts/ContentLayout.astro';
+
+const htmlContent = `
+  <h1>Terms of Service</h1>
+  <p><strong>Last updated: September 4, 2026</strong></p>
+
+  <h2>1. Agreement to Terms</h2>
+  <p>By accessing khandal.tech, you agree to be bound by these terms of service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws.</p>
+  
+  <h2>2. Acceptable Use</h2>
+  <p>This website hosts security research, exploit demonstrations, and vulnerability reports. These materials are provided strictly for educational purposes and authorized security auditing. You agree not to use any techniques or code snippets provided here for malicious purposes.</p>
+
+  <h2>3. Limitation of Liability</h2>
+  <p>The materials on this website are provided on an 'as is' basis. Priyansh Khandal makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property. In no event shall Priyansh Khandal be liable for any damages arising out of the use or inability to use the materials on this site.</p>
+
+  <h2>4. Version History</h2>
+  <ul>
+    <li><strong>v1.0 (Sep 2026):</strong> Initial Terms of Service established.</li>
+  </ul>
+
+  <h2>5. Contact</h2>
+  <p>For legal enquiries, please contact: <a href="mailto:legal@khandal.tech">legal@khandal.tech</a></p>
+`;
+---
+
+<ContentLayout
+  title="Terms of Service"
+  tag="Legal"
+  tagColor="#a8b3bc"
+  meta="Legal · Terms of Service"
+  backHref="/"
+  backLabel="Home"
+  htmlContent={htmlContent}
+/>

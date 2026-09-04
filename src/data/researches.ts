@@ -6,7 +6,7 @@ export interface Research {
   excerpt: string;
   date: string;
   readTime: string;
-  /** GitBook URL — used as external link on the research page */
+  /** GitBook URL - used as external link on the research page */
   gitbookUrl: string;
 }
 
@@ -16,7 +16,7 @@ export const researches: Research[] = [
     tag: 'Bug Bounty',
     tagColor: '#00ed64',
     title: 'The Hardening guide for Android',
-    excerpt: 'For anyone running pentesting, bug bounty, or blockchain workflows off a daily-driver Android phone — no custom ROM, no root, no bootloader unlock. Just discipline.',
+    excerpt: 'For anyone running pentesting, bug bounty, or blockchain workflows off a daily-driver Android phone - no custom ROM, no root, no bootloader unlock. Just discipline.',
     date: 'July 2026',
     readTime: '10 min',
     gitbookUrl: 'https://rootwithkhandal.gitbook.io/the-android-hardening',
@@ -34,8 +34,8 @@ export const researches: Research[] = [
   {
     slug: 'llm-jailbreak',
     tag: 'AI Red-Team',
-    tagColor: '#e53935',
-    title: 'Jailbreaking LLMs with Garak — What Actually Works in 2026',
+    tagColor: '#ff8a80',
+    title: 'Jailbreaking LLMs with Garak - What Actually Works in 2026',
     excerpt: 'A practical walkthrough of multi-turn prompt injection, role-play escalation, and token smuggling techniques tested against GPT-4o and Llama 3.',
     date: 'Feb 2026',
     readTime: '12 min',
@@ -44,8 +44,8 @@ export const researches: Research[] = [
   {
     slug: 'reentrancy-attacks',
     tag: 'Blockchain',
-    tagColor: '#69f0ae',
-    title: 'Reentrancy Attacks — From Classic to Cross-Function Variants',
+    tagColor: '#b9f6ca',
+    title: 'Reentrancy Attacks - From Classic to Cross-Function Variants',
     excerpt: 'Deep dive into reentrancy patterns in Solidity, how Slither and Foundry fuzz tests catch them, and a real Code4rena finding walkthrough.',
     date: 'Jan 2026',
     readTime: '10 min',
@@ -54,8 +54,8 @@ export const researches: Research[] = [
   {
     slug: 'siem-triage',
     tag: 'SOC / Blue Team',
-    tagColor: '#ff9800',
-    title: 'SIEM Alert Triage at Scale — Cutting False Positives by 60%',
+    tagColor: '#ffcc80',
+    title: 'SIEM Alert Triage at Scale - Cutting False Positives by 60%',
     excerpt: 'Lessons from building correlation rules, tuning Sigma detections, and using Python to auto-enrich alerts with threat intel feeds.',
     date: 'Dec 2025',
     readTime: '7 min',
@@ -64,8 +64,8 @@ export const researches: Research[] = [
   {
     slug: 'nixos-wireguard-opsec',
     tag: 'OPSEC',
-    tagColor: '#80cbc4',
-    title: 'Declarative OPSEC — Managing a Kill-Switch WireGuard Setup with NixOS',
+    tagColor: '#b2dfdb',
+    title: 'Declarative OPSEC - Managing a Kill-Switch WireGuard Setup with NixOS',
     excerpt: 'How I use Home Manager and WireGuard to enforce a network kill-switch, compartmentalised identities, and reproducible security tooling.',
     date: 'Nov 2025',
     readTime: '9 min',
@@ -74,8 +74,8 @@ export const researches: Research[] = [
   {
     slug: 'ssrf-aws-metadata',
     tag: 'Web Hacking',
-    tagColor: '#ce93d8',
-    title: 'SSRF to Internal AWS Metadata — A Bug Bounty Case Study',
+    tagColor: '#e1bee7',
+    title: 'SSRF to Internal AWS Metadata - A Bug Bounty Case Study',
     excerpt: 'Step-by-step breakdown of chaining an open redirect with a blind SSRF to reach the EC2 metadata endpoint and escalate to credential theft.',
     date: 'Oct 2025',
     readTime: '11 min',

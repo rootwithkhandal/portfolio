@@ -1,0 +1,42 @@
+---
+import ContentLayout from '../layouts/ContentLayout.astro';
+
+const htmlContent = `
+  <h1>Privacy Policy</h1>
+  <p><strong>Last updated: September 4, 2026</strong></p>
+  
+  <div class="legal-summary" style="background: rgba(0,237,100,0.05); padding: 1rem; border-left: 3px solid var(--accent); margin: 2rem 0; border-radius: 4px;">
+    <strong>Plain-Language Summary:</strong> I don't track you. I only collect information you voluntarily provide (like when you email me) to respond to your queries. I don't sell your data, and you can ask me to delete it anytime.
+  </div>
+  
+  <h2>1. Information I Collect</h2>
+  <p>I only collect personal information when it is voluntarily provided by you, such as when you reach out via email for professional inquiries. This website is a static portfolio and does not use account systems, databases, or hidden trackers.</p>
+  
+  <h2>2. How I Use Your Information</h2>
+  <p>Any information you provide is used solely for professional communication—specifically, responding to your queries, project requests, or security discussions.</p>
+  
+  <h2>3. Data Retention and Deletion</h2>
+  <p>I retain correspondence only as long as necessary to resolve the inquiry or for ongoing professional relationships. You have the right to request the deletion of any correspondence history by contacting me directly.</p>
+  
+  <h2>4. Third-Party Links</h2>
+  <p>My website may link to external sites (like GitHub or TryHackMe) that are not operated by me. I have no control over the content and practices of these sites and cannot accept responsibility for their privacy policies.</p>
+
+  <h2>5. Version History</h2>
+  <ul>
+    <li><strong>v1.0 (Sep 2026):</strong> Initial privacy policy published. Established no-tracking baseline.</li>
+  </ul>
+
+  <h2>6. Legal & Privacy Contact</h2>
+  <p>For data, privacy, or legal enquiries, please contact: <a href="mailto:legal@khandal.tech">legal@khandal.tech</a></p>
+`;
+---
+
+<ContentLayout
+  title="Privacy Policy"
+  tag="Legal"
+  tagColor="#a8b3bc"
+  meta="Legal · Privacy Policy"
+  backHref="/"
+  backLabel="Home"
+  htmlContent={htmlContent}
+/>

@@ -1,13 +1,13 @@
 ---
 const skills = [
-  { label: 'Burp Suite Pro',    color: '#e53935' },
+  { label: 'Burp Suite Pro',    color: '#ff8a80' },
   { label: 'Linux',             color: '#00ed64' },
-  { label: 'Python',            color: '#69f0ae' },
-  { label: 'Foundry',           color: '#ff9800' },
-  { label: 'Ollama / LLMs',     color: '#ce93d8' },
-  { label: 'WireGuard',         color: '#80cbc4' },
-  { label: 'Slither',           color: '#f06292' },
-  { label: 'ProjectDiscovery',  color: '#4dd0e1' },
+  { label: 'Python',            color: '#b9f6ca' },
+  { label: 'Foundry',           color: '#ffcc80' },
+  { label: 'Ollama / LLMs',     color: '#e1bee7' },
+  { label: 'WireGuard',         color: '#b2dfdb' },
+  { label: 'Slither',           color: '#f8bbd0' },
+  { label: 'ProjectDiscovery',  color: '#b2ebf2' },
 ];
 
 const proficiency = [
@@ -29,35 +29,35 @@ const certificates = [
     name: 'IBM Cybersecurity Analyst Certificate',
     issuer: 'IBM / Coursera',
     year: '2025',
-    color: '#69f0ae',
+    color: '#b9f6ca',
     url: 'https://grow.google/certificates/cybersecurity/',
   },
   {
     name: 'Cybersecurity 101',
     issuer: 'TryHackMe',
     year: '2025',
-    color: '#ff9800',
+    color: '#ffcc80',
     url: 'https://tryhackme.com/path/outline/jrpenetrationtester',
   },
   {
     name: 'AI for Anomaly Detection',
     issuer: 'Nvidia',
     year: '2025',
-    color: '#ce93d8',
+    color: '#e1bee7',
     url: 'https://tryhackme.com/path/outline/web',
   },
   {
     name: 'Blockchain Security Basics',
     issuer: 'Immunefi',
     year: '2025',
-    color: '#f06292',
+    color: '#f8bbd0',
     url: 'https://immunefi.com',
   },
   {
     name: 'Introduction to AI Red-Teaming',
     issuer: 'Microsoft / PyRIT',
     year: '2025',
-    color: '#80cbc4',
+    color: '#b2dfdb',
     url: 'https://github.com/Azure/PyRIT',
   },
 ];
@@ -139,7 +139,7 @@ const certificates = [
           <div class="certs-grid">
             {certificates.map(({ name, issuer, year, color, url }) => (
               <a href={url} target="_blank" rel="noopener noreferrer" class="cert-card">
-                <div class="cert-bar" style={`background:${color}`}></div>
+
                 <div class="cert-body">
                   <div class="cert-issuer" style={`color:${color}`}>{issuer} · {year}</div>
                   <div class="cert-name">{name}</div>
@@ -354,7 +354,7 @@ const certificates = [
 
   .certs-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
 
@@ -374,16 +374,9 @@ const certificates = [
     border-color: rgba(0,237,100,0.3);
     background: rgba(0,237,100,0.03);
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2), 0 0 0 1px rgba(0,237,100,0.1);
   }
 
-  .cert-bar {
-    width: 3px;
-    align-self: stretch;
-    flex-shrink: 0;
-    opacity: 0.8;
-    transition: opacity 0.2s;
-  }
-  .cert-card:hover .cert-bar { opacity: 1; }
 
   .cert-body {
     flex: 1;
@@ -421,9 +414,6 @@ const certificates = [
     transform: translate(1px, -1px);
   }
 
-  @media (max-width: 1023px) {
-    .certs-grid { grid-template-columns: repeat(2, 1fr); }
-  }
   @media (max-width: 599px) {
     .certs-grid { grid-template-columns: 1fr; }
   }

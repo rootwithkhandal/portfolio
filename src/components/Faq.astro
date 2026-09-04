@@ -1,0 +1,131 @@
+---
+export const faqs = [
+  {
+    question: "Who is Priyansh Khandal?",
+    answer: "Priyansh Khandal is a cybersecurity researcher, SOC analyst, and penetration tester specializing in bug bounty hunting, AI red-teaming, crypto investigations, and blockchain smart contract auditing."
+  },
+  {
+    question: "What security services and research areas does Priyansh specialize in?",
+    answer: "Priyansh specializes in SOC Alert Triage, Vulnerability Assessment & Bug Bounties, AI Red-Teaming (using tools like Garak and PyRIT), Smart Contract Auditing (EVM reentrancy, flash loan attacks), and Declarative Security Environments with NixOS."
+  },
+  {
+    question: "How can I contact Priyansh Khandal for security inquiries or audits?",
+    answer: "You can reach Priyansh directly via email at priyansh@khandal.tech or connect on LinkedIn and GitHub (@rootwithkhandal)."
+  },
+  {
+    question: "Where can I find Priyansh's security research writeups and code repositories?",
+    answer: "Detailed technical writeups are published on the Researches page (/researches), and open-source tools/projects are hosted on the Projects page (/projects) and GitHub."
+  }
+];
+
+export const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<section id="faq" class="section-inner reveal">
+  <div class="section-label">FAQ & Knowledge Base</div>
+  <h2 class="section-title">FREQUENTLY ASKED QUESTIONS</h2>
+
+  <div class="faq-list">
+    {faqs.map((faq, index) => (
+      <details class="faq-item" open={index === 0}>
+        <summary class="faq-question">
+          <span>{faq.question}</span>
+          <svg class="faq-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </summary>
+        <div class="faq-answer">
+          <p>{faq.answer}</p>
+        </div>
+      </details>
+    ))}
+  </div>
+</section>
+
+<style>
+  #faq {
+    padding: clamp(3rem, 6vw, 6rem) 0;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 850px;
+  }
+
+  .faq-item {
+    background: var(--bg2);
+    border: 0.5px solid rgba(255,255,255,0.07);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .faq-item[open] {
+    border-color: rgba(0,237,100,0.3);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  }
+
+  .faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 1.5rem;
+    font-family: var(--font-display);
+    font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+    font-weight: 500;
+    color: var(--text);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question:hover {
+    color: var(--accent);
+  }
+
+  .faq-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--muted);
+    transition: transform 0.3s, color 0.3s;
+    flex-shrink: 0;
+  }
+
+  .faq-item[open] .faq-icon {
+    transform: rotate(180deg);
+    color: var(--accent);
+  }
+
+  .faq-answer {
+    padding: 0 1.5rem 1.25rem 1.5rem;
+    font-family: var(--font-body);
+    font-size: clamp(0.82rem, 1.4vw, 0.92rem);
+    color: var(--muted);
+    line-height: 1.7;
+    border-top: 0.5px solid rgba(255,255,255,0.05);
+    margin-top: 0.25rem;
+    padding-top: 1rem;
+  }
+
+  @media (max-width: 599px) {
+    .faq-question { padding: 1rem; }
+    .faq-answer { padding: 0.75rem 1rem 1rem 1rem; }
+  }
+</style>

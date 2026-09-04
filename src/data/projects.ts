@@ -4,7 +4,7 @@ export interface Project {
   tagColor: string;
   title: string;
   excerpt: string;
-  /** GitHub owner/repo — README is fetched from this at build time */
+  /** GitHub owner/repo - README is fetched from this at build time */
   githubRepo: string;
 }
 
@@ -20,7 +20,7 @@ export const projects: Project[] = [
   {
     slug: 'llm-jailbreak',
     tag: 'AI Red-Team',
-    tagColor: '#e53935',
+    tagColor: '#ff8a80',
     title: 'LLM Jailbreak Research',
     excerpt: 'Multi-turn prompt injection and token smuggling research.',
     githubRepo: 'rootwithkhandal/llm-jailbreak',
@@ -28,7 +28,7 @@ export const projects: Project[] = [
   {
     slug: 'smart-contract-audit',
     tag: 'Blockchain',
-    tagColor: '#69f0ae',
+    tagColor: '#b9f6ca',
     title: 'Smart Contract Audit',
     excerpt: 'Reentrancy and logic flaw audits on Immunefi and Code4rena.',
     githubRepo: 'rootwithkhandal/smart-contract-audit',
@@ -36,7 +36,7 @@ export const projects: Project[] = [
   {
     slug: 'siem-triage',
     tag: 'SOC',
-    tagColor: '#ff9800',
+    tagColor: '#ffcc80',
     title: 'SIEM Alert Triage',
     excerpt: 'Python-based alert enrichment and false-positive reduction.',
     githubRepo: 'rootwithkhandal/siem-triage',
@@ -44,7 +44,7 @@ export const projects: Project[] = [
   {
     slug: 'wireguard-killswitch',
     tag: 'OPSEC',
-    tagColor: '#80cbc4',
+    tagColor: '#b2dfdb',
     title: 'WireGuard Kill-Switch',
     excerpt: 'NixOS declarative WireGuard kill-switch configuration.',
     githubRepo: 'rootwithkhandal/wireguard-killswitch',
@@ -52,7 +52,7 @@ export const projects: Project[] = [
   {
     slug: 'llm-router',
     tag: 'Multi-Model',
-    tagColor: '#ce93d8',
+    tagColor: '#e1bee7',
     title: 'Adaptive LLM Router',
     excerpt: 'FastAPI service that routes prompts across local and cloud LLMs.',
     githubRepo: 'rootwithkhandal/adaptive-llm-router',
@@ -60,7 +60,7 @@ export const projects: Project[] = [
   {
     slug: 'home-manager-profiles',
     tag: 'Nix / DevOps',
-    tagColor: '#4dd0e1',
+    tagColor: '#b2ebf2',
     title: 'Home-Manager Profiles',
     excerpt: 'Declarative NixOS home-manager security tooling profiles.',
     githubRepo: 'rootwithkhandal/home-manager-profiles',
@@ -68,7 +68,7 @@ export const projects: Project[] = [
   {
     slug: 'bounty-tracker',
     tag: 'Analytics',
-    tagColor: '#ce93d8',
+    tagColor: '#e1bee7',
     title: 'Bug Bounty Tracker',
     excerpt: 'Dashboard for tracking bug bounty submissions and yield.',
     githubRepo: 'rootwithkhandal/bounty-tracker',

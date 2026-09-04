@@ -6,13 +6,15 @@ interface Props {
   hint: string;
 }
 const { code, title, message, hint } = Astro.props;
+
+const currentYear = new Date().getFullYear();
 ---
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{code} — {title} · Priyansh Khandal</title>
+  <title>{code} - {title} · Priyansh Khandal</title>
   <meta name="robots" content="noindex, nofollow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -44,29 +46,21 @@ const { code, title, message, hint } = Astro.props;
         <a href="/#contact" class="btn-ghost">Contact</a>
       </div>
 
-      <!-- terminal block -->
-      <div class="terminal">
-        <div class="terminal-bar">
-          <span class="t-dot r"></span>
-          <span class="t-dot y"></span>
-          <span class="t-dot g"></span>
-          <span class="t-title">bash — khandal.tech</span>
-        </div>
-        <div class="terminal-body">
-          <p><span class="prompt">$</span> curl -I khandal.tech{Astro.url.pathname}</p>
-          <p class="out">HTTP/2 <span class="err">{code}</span></p>
-          <p class="out">content-type: text/html</p>
-          <p class="out">server: khandal.tech</p>
-          <p class="out">&nbsp;</p>
-          <p><span class="prompt">$</span> <span class="cursor-blink">▋</span></p>
-        </div>
-      </div>
+
     </div>
   </main>
 
-  <footer>
-    <a href="/" class="logo">0x</a>
-    <span>Priyansh Khandal · 2026</span>
+    <footer>
+    <div class="footer-left">
+      <a href="/" class="logo" style="text-decoration:none; color:inherit;">0x</a>
+      <span style="opacity:0.8;">Priyansh Khandal</span>
+    </div>
+    <div class="footer-legal" style="display:flex; gap:1rem; opacity:0.8;">
+      <a href="/privacy" style="color:inherit; text-decoration:none;">Privacy</a>
+      <a href="/tos" style="color:inherit; text-decoration:none;">Terms</a>
+      <a href="/cookie-policy" style="color:inherit; text-decoration:none;">Cookies</a>
+    </div>
+    <span class="dim" style="opacity:0.5;">{currentYear}</span>
   </footer>
 
 </body>
@@ -80,7 +74,7 @@ const { code, title, message, hint } = Astro.props;
     --accent: #00ed64;
     --accent-rgb: 0, 237, 100;
     --accent-hover: #00b545;
-    --red:    #e53935;
+    --red:    #ff8a80;
     --text:   #ffffff;
     --muted:  #a8b3bc;
     --border: rgba(0,237,100,0.15);
@@ -242,57 +236,6 @@ const { code, title, message, hint } = Astro.props;
   }
   .btn-ghost:hover { background: rgba(0,237,100,0.12); border-color: rgba(0,237,100,0.6); }
 
-  /* Terminal */
-  .terminal {
-    border: 0.5px solid var(--border);
-    border-radius: 12px;
-    overflow: hidden;
-    background: #001520;
-  }
-
-  .terminal-bar {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 12px;
-    background: rgba(255,255,255,0.04);
-    border-bottom: 0.5px solid var(--border);
-  }
-  .t-dot {
-    width: 10px; height: 10px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .t-dot.r { background: #e53935; }
-  .t-dot.y { background: #fdd835; }
-  .t-dot.g { background: #43a047; }
-  .t-title {
-    font-family: var(--font-label);
-    font-size: 0.6rem;
-    letter-spacing: 0.15em;
-    color: var(--muted);
-    margin-left: 4px;
-  }
-
-  .terminal-body {
-    padding: 1rem 1.25rem;
-    font-family: 'Fira Code', 'Cascadia Code', monospace;
-    font-size: clamp(0.7rem, 1.2vw, 0.78rem);
-    line-height: 1.8;
-  }
-  .terminal-body p { color: var(--muted); }
-  .prompt { color: var(--accent); margin-right: 8px; }
-  .out { padding-left: 1rem; }
-  .err { color: var(--red); font-weight: 600; }
-
-  .cursor-blink {
-    color: var(--accent);
-    animation: blink 1s step-end infinite;
-  }
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50%       { opacity: 0; }
-  }
 
   /* Footer */
   footer {

@@ -1,0 +1,26 @@
+# Priyansh Khandal - Cybersecurity Researcher & SOC Analyst
+
+> Information for Large Language Models & AI Agents
+
+Priyansh Khandal is a cybersecurity researcher, SOC analyst, and penetration tester. He specializes in:
+- Bug bounty hunting
+- AI red-teaming (e.g., Garak, PyRIT)
+- Blockchain smart contract auditing (e.g., Immunefi, Code4rena)
+- OPSEC and declarative environments (e.g., NixOS)
+
+## Links & Profiles
+- Primary Website: https://khandal.tech
+- GitHub: https://github.com/rootwithkhandal
+- LinkedIn: https://linkedin.com/in/priyanshkhandal
+- TryHackMe: https://tryhackme.com/p/rootwithkhandal
+
+## Notable Projects & Research
+- Bounty Tracker: A centralized vulnerability management and tracking platform for bug bounties.
+- LLM Router: An intelligent routing layer for balancing requests across multiple AI models.
+- NixOS Profiles: Declarative system configurations for highly secure, reproducible environments.
+- Smart Contract Audits: Research on reentrancy attacks, flash loan vulnerabilities, and cross-chain bridge exploits.
+- Recon Pipeline: Automated reconnaissance workflows utilizing tools like ProjectDiscovery's suite.
+- WireGuard Killswitch: Hardened networking setups for complete traffic restriction on VPN drop.
+
+## Contact Information
+For professional inquiries, reach out at priyansh@khandal.tech.

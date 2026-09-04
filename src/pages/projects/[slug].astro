@@ -20,6 +20,16 @@ const githubUrl = `https://github.com/rootwithkhandal/${repoName}`;
 const htmlContent = raw
   ? await marked.parse(raw)
   : await marked.parse(`## ${project.title}\n\n${project.excerpt}\n\n> Content coming soon.`);
+
+const projectSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": project.title,
+  "description": project.excerpt,
+  "codeRepository": githubUrl,
+  "author": { "@id": "https://khandal.tech/#person" },
+  "keywords": [project.tag, "Cybersecurity", "Open Source"]
+};
 ---
 
 <ContentLayout
@@ -32,4 +42,5 @@ const htmlContent = raw
   externalUrl={githubUrl}
   externalLabel="View on GitHub"
   htmlContent={htmlContent}
+  extraSchema={projectSchema}
 />
