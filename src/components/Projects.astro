@@ -6,17 +6,17 @@ const cardMeta: Record<string, { cls: string; style?: string; svg: string }> = {
   'recon-pipeline': {
     cls: 'span-v p1',
     svg: `<svg class="card-deco" viewBox="0 0 200 400" xmlns="http://www.w3.org/2000/svg">
-      <rect x="20" y="20" width="160" height="20" fill="rgba(79,195,247,0.08)" rx="2"/>
-      <rect x="20" y="50" width="120" height="8" fill="rgba(79,195,247,0.05)" rx="1"/>
-      <rect x="20" y="66" width="140" height="8" fill="rgba(79,195,247,0.05)" rx="1"/>
-      <rect x="20" y="82" width="100" height="8" fill="rgba(79,195,247,0.05)" rx="1"/>
-      <rect x="20" y="110" width="160" height="1" fill="rgba(79,195,247,0.1)"/>
-      <text x="20" y="140" font-size="11" fill="rgba(79,195,247,0.25)" font-family="monospace">$ nmap -sV -A</text>
-      <text x="20" y="158" font-size="11" fill="rgba(79,195,247,0.18)" font-family="monospace">  target.io</text>
-      <text x="20" y="180" font-size="11" fill="rgba(79,195,247,0.12)" font-family="monospace">PORT  STATE</text>
-      <text x="20" y="198" font-size="11" fill="rgba(79,195,247,0.10)" font-family="monospace">80    open</text>
-      <text x="20" y="216" font-size="11" fill="rgba(79,195,247,0.10)" font-family="monospace">443   open</text>
-      <text x="20" y="234" font-size="11" fill="rgba(79,195,247,0.08)" font-family="monospace">8443  open</text>
+      <rect x="20" y="20" width="160" height="20" fill="rgba(255,200,50,0.08)" rx="2"/>
+      <rect x="20" y="50" width="120" height="8" fill="rgba(255,200,50,0.05)" rx="1"/>
+      <rect x="20" y="66" width="140" height="8" fill="rgba(255,200,50,0.05)" rx="1"/>
+      <rect x="20" y="82" width="100" height="8" fill="rgba(255,200,50,0.05)" rx="1"/>
+      <rect x="20" y="110" width="160" height="1" fill="rgba(255,200,50,0.1)"/>
+      <text x="20" y="140" font-size="11" fill="rgba(255,200,50,0.25)" font-family="monospace">$ nmap -sV -A</text>
+      <text x="20" y="158" font-size="11" fill="rgba(255,200,50,0.18)" font-family="monospace">  target.io</text>
+      <text x="20" y="180" font-size="11" fill="rgba(255,200,50,0.12)" font-family="monospace">PORT  STATE</text>
+      <text x="20" y="198" font-size="11" fill="rgba(255,200,50,0.10)" font-family="monospace">80    open</text>
+      <text x="20" y="216" font-size="11" fill="rgba(255,200,50,0.10)" font-family="monospace">443   open</text>
+      <text x="20" y="234" font-size="11" fill="rgba(255,200,50,0.08)" font-family="monospace">8443  open</text>
     </svg>`,
   },
   'llm-jailbreak': {
@@ -79,12 +79,12 @@ const cardMeta: Record<string, { cls: string; style?: string; svg: string }> = {
     cls: 'p7',
     style: 'background:#060c0e;',
     svg: `<svg class="card-deco" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-      <text x="16" y="50"  font-size="10" fill="rgba(79,195,247,0.2)"  font-family="monospace">{ pkgs, ... }:</text>
-      <text x="16" y="68"  font-size="10" fill="rgba(79,195,247,0.15)" font-family="monospace">home.packages =</text>
-      <text x="16" y="86"  font-size="10" fill="rgba(79,195,247,0.12)" font-family="monospace">  with pkgs; [</text>
-      <text x="16" y="104" font-size="10" fill="rgba(79,195,247,0.1)"  font-family="monospace">    nuclei</text>
-      <text x="16" y="122" font-size="10" fill="rgba(79,195,247,0.1)"  font-family="monospace">    subfinder</text>
-      <text x="16" y="140" font-size="10" fill="rgba(79,195,247,0.08)" font-family="monospace">  ];</text>
+      <text x="16" y="50"  font-size="10" fill="rgba(255,200,50,0.2)"  font-family="monospace">{ pkgs, ... }:</text>
+      <text x="16" y="68"  font-size="10" fill="rgba(255,200,50,0.15)" font-family="monospace">home.packages =</text>
+      <text x="16" y="86"  font-size="10" fill="rgba(255,200,50,0.12)" font-family="monospace">  with pkgs; [</text>
+      <text x="16" y="104" font-size="10" fill="rgba(255,200,50,0.1)"  font-family="monospace">    nuclei</text>
+      <text x="16" y="122" font-size="10" fill="rgba(255,200,50,0.1)"  font-family="monospace">    subfinder</text>
+      <text x="16" y="140" font-size="10" fill="rgba(255,200,50,0.08)" font-family="monospace">  ];</text>
     </svg>`,
   },
   'bounty-tracker': {
@@ -187,15 +187,15 @@ const cardMeta: Record<string, { cls: string; style?: string; svg: string }> = {
     color: var(--accent);
     text-decoration: none;
     padding: 6px 14px;
-    border: 1px solid rgba(79,195,247,0.3);
+    border: 1px solid rgba(255,200,50,0.3);
     border-radius: 2px;
-    background: rgba(79,195,247,0.05);
+    background: rgba(255,200,50,0.05);
     transition: background 0.2s, border-color 0.2s, transform 0.2s;
     white-space: nowrap;
   }
   .projects-all-btn:hover {
-    background: rgba(79,195,247,0.12);
-    border-color: rgba(79,195,247,0.6);
+    background: rgba(255,200,50,0.12);
+    border-color: rgba(255,200,50,0.6);
     transform: translateY(-1px);
   }
   .projects-all-btn svg { width: 14px; height: 14px; fill: var(--accent); flex-shrink: 0; }
@@ -218,7 +218,7 @@ const cardMeta: Record<string, { cls: string; style?: string; svg: string }> = {
     transition: border-color 0.3s;
     display: block;
   }
-  .project-card:hover { border-color: rgba(79,195,247,0.3); }
+  .project-card:hover { border-color: rgba(255,200,50,0.3); }
   .project-card:hover .project-overlay { opacity: 1; }
   .project-card:hover .project-img-bg  { transform: scale(1.05); }
 

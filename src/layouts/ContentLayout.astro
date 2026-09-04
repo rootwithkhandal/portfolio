@@ -75,10 +75,12 @@ const {
   :root {
     --bg:     #060c14;
     --bg2:    #0a1220;
-    --accent: #4fc3f7;
+    --accent: #FFC832;
+    --accent-rgb: 255, 200, 50;
+    --accent-hover: #FFD95C;
     --text:   #e8eaf0;
     --muted:  #6b7a8d;
-    --border: rgba(79,195,247,0.15);
+    --border: rgba(255,200,50,0.15);
     --font-display: 'Bebas Neue', sans-serif;
     --font-label:   'Rajdhani', sans-serif;
     --font-body:    'Space Grotesk', sans-serif;
@@ -117,7 +119,7 @@ const {
     letter-spacing: 0.08em;
     color: var(--accent);
     text-decoration: none;
-    text-shadow: 0 0 20px rgba(79,195,247,0.4);
+    text-shadow: 0 0 20px rgba(255,200,50,0.4);
     flex-shrink: 0;
   }
 
@@ -153,15 +155,15 @@ const {
     color: var(--accent);
     text-decoration: none;
     padding: 5px 12px;
-    border: 1px solid rgba(79,195,247,0.3);
+    border: 1px solid rgba(255,200,50,0.3);
     border-radius: 2px;
-    background: rgba(79,195,247,0.05);
+    background: rgba(255,200,50,0.05);
     transition: background 0.2s, border-color 0.2s;
     white-space: nowrap;
   }
   .external-link:hover {
-    background: rgba(79,195,247,0.12);
-    border-color: rgba(79,195,247,0.6);
+    background: rgba(255,200,50,0.12);
+    border-color: rgba(255,200,50,0.6);
   }
   .external-link svg { width: 12px; height: 12px; flex-shrink: 0; }
 
@@ -234,7 +236,7 @@ const {
   .prose a {
     color: var(--accent);
     text-decoration: none;
-    border-bottom: 1px solid rgba(79,195,247,0.3);
+    border-bottom: 1px solid rgba(255,200,50,0.3);
     transition: border-color 0.2s;
   }
   .prose a:hover { border-color: var(--accent); }
@@ -242,8 +244,8 @@ const {
   .prose code {
     font-family: 'Fira Code', 'Cascadia Code', monospace;
     font-size: 0.85em;
-    background: rgba(79,195,247,0.08);
-    border: 1px solid rgba(79,195,247,0.15);
+    background: rgba(255,200,50,0.08);
+    border: 1px solid rgba(255,200,50,0.15);
     border-radius: 3px;
     padding: 1px 6px;
     color: var(--accent);
@@ -251,7 +253,7 @@ const {
 
   .prose pre {
     background: #0a1520;
-    border: 1px solid rgba(79,195,247,0.12);
+    border: 1px solid rgba(255,200,50,0.12);
     border-radius: 4px;
     padding: 1.25rem 1.5rem;
     overflow-x: auto;
@@ -309,7 +311,7 @@ const {
     text-transform: uppercase;
     font-size: 0.65rem;
     color: var(--accent);
-    background: rgba(79,195,247,0.05);
+    background: rgba(255,200,50,0.05);
   }
 
   /* Footer */

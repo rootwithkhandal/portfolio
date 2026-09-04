@@ -77,11 +77,13 @@ const { code, title, message, hint } = Astro.props;
 
   :root {
     --bg:     #060c14;
-    --accent: #4fc3f7;
+    --accent: #FFC832;
+    --accent-rgb: 255, 200, 50;
+    --accent-hover: #FFD95C;
     --red:    #e53935;
     --text:   #e8eaf0;
     --muted:  #6b7a8d;
-    --border: rgba(79,195,247,0.15);
+    --border: rgba(255,200,50,0.15);
     --font-display: 'Bebas Neue', sans-serif;
     --font-label:   'Rajdhani', sans-serif;
     --font-body:    'Space Grotesk', sans-serif;
@@ -130,7 +132,7 @@ const { code, title, message, hint } = Astro.props;
     transform: translate(-50%, -50%);
     font-family: var(--font-display);
     font-size: clamp(12rem, 35vw, 32rem);
-    color: rgba(79,195,247,0.03);
+    color: rgba(255,200,50,0.03);
     letter-spacing: -0.02em;
     pointer-events: none;
     user-select: none;
@@ -199,7 +201,7 @@ const { code, title, message, hint } = Astro.props;
     font-size: 0.72rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: rgba(79,195,247,0.5);
+    color: rgba(255,200,50,0.5);
     margin-bottom: 2.5rem;
   }
 
@@ -233,12 +235,12 @@ const { code, title, message, hint } = Astro.props;
     color: var(--accent);
     text-decoration: none;
     padding: 8px 20px;
-    border: 1px solid rgba(79,195,247,0.3);
+    border: 1px solid rgba(255,200,50,0.3);
     border-radius: 2px;
-    background: rgba(79,195,247,0.05);
+    background: rgba(255,200,50,0.05);
     transition: background 0.2s, border-color 0.2s;
   }
-  .btn-ghost:hover { background: rgba(79,195,247,0.12); border-color: rgba(79,195,247,0.6); }
+  .btn-ghost:hover { background: rgba(255,200,50,0.12); border-color: rgba(255,200,50,0.6); }
 
   /* Terminal */
   .terminal {
@@ -309,7 +311,7 @@ const { code, title, message, hint } = Astro.props;
     font-family: var(--font-display);
     font-size: 1.3rem;
     letter-spacing: 0.08em;
-    color: rgba(79,195,247,0.4);
+    color: rgba(255,200,50,0.4);
     text-decoration: none;
   }
 

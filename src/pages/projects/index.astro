@@ -2,7 +2,7 @@
 import { projects } from '../../data/projects';
 
 const tagColors: Record<string, string> = {
-  'Bug Bounty':    '#4fc3f7',
+  'Bug Bounty':    '#FFC832',
   'AI Red-Team':   '#e53935',
   'Blockchain':    '#69f0ae',
   'SOC':           '#ff9800',
@@ -76,7 +76,7 @@ const tags = ['All', ...new Set(projects.map(p => p.tag))];
     <!-- Projects grid -->
     <div class="projects-grid" id="projectsGrid">
       {projects.map(project => {
-        const color = tagColors[project.tag] ?? '#4fc3f7';
+        const color = tagColors[project.tag] ?? '#FFC832';
         const repoName = project.githubRepo.split('/')[1] ?? project.slug;
         return (
           <a
@@ -160,10 +160,12 @@ const tags = ['All', ...new Set(projects.map(p => p.tag))];
     --bg:     #060c14;
     --bg2:    #0a1220;
     --bg3:    #0d1828;
-    --accent: #4fc3f7;
+    --accent: #FFC832;
+    --accent-rgb: 255, 200, 50;
+    --accent-hover: #FFD95C;
     --text:   #e8eaf0;
     --muted:  #6b7a8d;
-    --border: rgba(79,195,247,0.15);
+    --border: rgba(255,200,50,0.15);
     --font-display: 'Bebas Neue', sans-serif;
     --font-label:   'Rajdhani', sans-serif;
     --font-body:    'Space Grotesk', sans-serif;
@@ -202,7 +204,7 @@ const tags = ['All', ...new Set(projects.map(p => p.tag))];
     letter-spacing: 0.08em;
     color: var(--accent);
     text-decoration: none;
-    text-shadow: 0 0 20px rgba(79,195,247,0.4);
+    text-shadow: 0 0 20px rgba(255,200,50,0.4);
     flex-shrink: 0;
   }
 
@@ -234,14 +236,14 @@ const tags = ['All', ...new Set(projects.map(p => p.tag))];
     color: var(--accent);
     text-decoration: none;
     padding: 5px 12px;
-    border: 1px solid rgba(79,195,247,0.3);
+    border: 1px solid rgba(255,200,50,0.3);
     border-radius: 2px;
-    background: rgba(79,195,247,0.05);
+    background: rgba(255,200,50,0.05);
     transition: background 0.2s, border-color 0.2s;
     flex-shrink: 0;
     white-space: nowrap;
   }
-  .github-btn:hover { background: rgba(79,195,247,0.12); border-color: rgba(79,195,247,0.6); }
+  .github-btn:hover { background: rgba(255,200,50,0.12); border-color: rgba(255,200,50,0.6); }
   .github-btn svg { width: 13px; height: 13px; fill: var(--accent); }
 
   /* ── Main ── */
@@ -319,13 +321,13 @@ const tags = ['All', ...new Set(projects.map(p => p.tag))];
   }
   .filter-btn:hover {
     color: var(--accent);
-    border-color: rgba(79,195,247,0.3);
-    background: rgba(79,195,247,0.05);
+    border-color: rgba(255,200,50,0.3);
+    background: rgba(255,200,50,0.05);
   }
   .filter-btn.active {
     color: var(--accent);
-    background: rgba(79,195,247,0.1);
-    border-color: rgba(79,195,247,0.4);
+    background: rgba(255,200,50,0.1);
+    border-color: rgba(255,200,50,0.4);
   }
 
   /* ── Grid ── */
@@ -349,8 +351,8 @@ const tags = ['All', ...new Set(projects.map(p => p.tag))];
     transition: border-color 0.3s, transform 0.3s, background 0.3s;
   }
   .project-card:hover {
-    border-color: rgba(79,195,247,0.3);
-    background: rgba(79,195,247,0.02);
+    border-color: rgba(255,200,50,0.3);
+    background: rgba(255,200,50,0.02);
     transform: translateY(-4px);
   }
 
@@ -452,13 +454,13 @@ const tags = ['All', ...new Set(projects.map(p => p.tag))];
   .corner {
     position: absolute;
     width: 12px; height: 12px;
-    border-color: rgba(79,195,247,0.2);
+    border-color: rgba(255,200,50,0.2);
     border-style: solid;
     transition: border-color 0.3s;
   }
   .corner.tl { top: 0; left: 0;     border-width: 1px 0 0 1px; }
   .corner.br { bottom: 0; right: 0; border-width: 0 1px 1px 0; }
-  .project-card:hover .corner { border-color: rgba(79,195,247,0.5); }
+  .project-card:hover .corner { border-color: rgba(255,200,50,0.5); }
 
   /* Empty state */
   .empty {

@@ -12,7 +12,7 @@ export const projects: Project[] = [
   {
     slug: 'recon-pipeline',
     tag: 'Bug Bounty',
-    tagColor: '#4fc3f7',
+    tagColor: '#FFC832',
     title: 'Recon Pipeline',
     excerpt: 'Automated asset discovery and vulnerability scanning pipeline.',
     githubRepo: 'rootwithkhandal/recon-pipeline',

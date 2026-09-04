@@ -14,7 +14,7 @@ export const researches: Research[] = [
   {
     slug: 'recon-pipeline',
     tag: 'Bug Bounty',
-    tagColor: '#4fc3f7',
+    tagColor: '#FFC832',
     title: 'The Hardening guide for Android',
     excerpt: 'For anyone running pentesting, bug bounty, or blockchain workflows off a daily-driver Android phone — no custom ROM, no root, no bootloader unlock. Just discipline.',
     date: 'July 2026',
@@ -24,7 +24,7 @@ export const researches: Research[] = [
   {
     slug: 'recon-pipeline',
     tag: 'Bug Bounty',
-    tagColor: '#4fc3f7',
+    tagColor: '#FFC832',
     title: 'Building a Recon Pipeline with Subfinder, Httpx & Nuclei',
     excerpt: 'How I automated asset discovery and vulnerability scanning into a single declarative NixOS-managed pipeline that runs on every scope update.',
     date: 'Mar 2026',
