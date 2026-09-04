@@ -40,7 +40,7 @@ const links = [
 
         <div class="contact-links">
           {links.map(({ href, platform, handle, svg }, i) => (
-            <a href={href} class={`contact-link reveal d${i + 2}`}>
+            <a href={href} target={href.startsWith('mailto:') ? undefined : '_blank'} rel={href.startsWith('mailto:') ? undefined : 'noopener noreferrer me'} class={`contact-link reveal d${i + 2}`}>
               <div class="contact-icon" set:html={svg} />
               <div class="contact-link-info">
                 <div class="contact-link-platform">{platform}</div>

@@ -1,0 +1,23 @@
+# Priyansh Khandal
+
+> Cybersecurity Researcher, SOC Analyst, and Penetration Tester specializing in Bug Bounty, AI Red-Teaming, Smart Contract Auditing, and NixOS Security.
+
+Priyansh Khandal is an offensive and defensive security researcher. His work spans SOC triage, automated reconnaissance pipelines, AI model security evaluation (red-teaming), EVM smart contract auditing, and declarative OPSEC.
+
+## Primary Surfaces
+- [Home Page](https://khandal.tech): Overview, active skills, certifications, and contact options.
+- [Projects](https://khandal.tech/projects): Open-source security tools, penetration testing scripts, and system configurations.
+- [Researches](https://khandal.tech/researches): Technical writeups on vulnerability research, SIEM triage, and exploit mechanics.
+- [Sitemap](https://khandal.tech/sitemap-index.xml): XML sitemap listing all published routes.
+
+## Core Specializations
+- **SOC Analysis & SIEM Triage:** Automated incident triage, log analysis, and detection engineering.
+- **AI Red-Teaming:** Security evaluations using PyRIT, Garak, and prompt-injection testing datasets.
+- **Smart Contract Security:** EVM vulnerability analysis, reentrancy detection, and protocol auditing.
+- **Declarative Security:** NixOS system hardening, reproducible security labs, and WireGuard killswitch routing.
+
+## External Profiles & Verification
+- GitHub: [rootwithkhandal](https://github.com/rootwithkhandal)
+- LinkedIn: [priyansh-khandal](https://linkedin.com/in/priyansh-khandal)
+- TryHackMe: [rootwithkhandal](https://tryhackme.com/p/rootwithkhandal)
+- Email: [priyansh@khandal.tech](mailto:priyansh@khandal.tech)

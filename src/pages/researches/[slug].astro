@@ -17,6 +17,18 @@ const raw = mdFiles[`../../data/researches/${slug}.md`];
 const htmlContent = raw
   ? await marked.parse(raw)
   : await marked.parse(`## ${research.title}\n\n${research.excerpt}\n\n> Content coming soon.\n\n[Read on GitBook →](${research.gitbookUrl})`);
+
+const researchSchema = {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": research.title,
+  "description": research.excerpt,
+  "author": { "@id": "https://khandal.tech/#person" },
+  "publisher": { "@id": "https://khandal.tech/#person" },
+  "datePublished": research.date,
+  "url": `https://khandal.tech/researches/${research.slug}`,
+  "about": [research.tag, "Cybersecurity Research"]
+};
 ---
 
 <ContentLayout
@@ -29,4 +41,5 @@ const htmlContent = raw
   externalUrl={research.gitbookUrl}
   externalLabel="Open in GitBook"
   htmlContent={htmlContent}
+  extraSchema={researchSchema}
 />
