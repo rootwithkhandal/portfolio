@@ -1,7 +1,7 @@
 ---
 const skills = [
   { label: 'Burp Suite Pro',    color: '#e53935' },
-  { label: 'Linux',             color: '#FFC832' },
+  { label: 'Linux',             color: '#00ed64' },
   { label: 'Python',            color: '#69f0ae' },
   { label: 'Foundry',           color: '#ff9800' },
   { label: 'Ollama / LLMs',     color: '#ce93d8' },
@@ -22,7 +22,7 @@ const certificates = [
     name: 'Certified SOC Analyst (CSA)',
     issuer: 'EC-Council',
     year: '2026',
-    color: '#FFC832',
+    color: '#00ed64',
     url: 'https://www.eccouncil.org/programs/certified-soc-analyst-csa/',
   },
   {
@@ -173,7 +173,7 @@ const certificates = [
   .profile-photo-box {
     width: 100%;
     aspect-ratio: 3/4;
-    border-radius: 2px;
+    border-radius: 12px;
     border: 0.5px solid var(--border);
     overflow: hidden;
     position: relative;
@@ -247,9 +247,9 @@ const certificates = [
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    background: rgba(255,200,50,0.06);
-    border: 1px solid rgba(255,200,50,0.18);
-    border-radius: 3px;
+    background: rgba(0,237,100,0.06);
+    border: 1px solid rgba(0,237,100,0.18);
+    border-radius: 9999px;
     padding: 6px 12px;
     font-family: var(--font-label);
     font-size: clamp(0.7rem, 1.3vw, 0.78rem);
@@ -260,8 +260,8 @@ const certificates = [
     cursor: default;
   }
   .skill-pill:hover {
-    background: rgba(255,200,50,0.12);
-    border-color: rgba(255,200,50,0.4);
+    background: rgba(0,237,100,0.12);
+    border-color: rgba(0,237,100,0.4);
   }
   .skill-dot {
     width: 7px; height: 7px;
@@ -364,15 +364,15 @@ const certificates = [
     gap: 0;
     background: var(--bg3);
     border: 0.5px solid rgba(255,255,255,0.07);
-    border-radius: 3px;
+    border-radius: 12px;
     text-decoration: none;
     color: inherit;
     overflow: hidden;
     transition: border-color 0.3s, transform 0.3s, background 0.3s;
   }
   .cert-card:hover {
-    border-color: rgba(255,200,50,0.3);
-    background: rgba(255,200,50,0.03);
+    border-color: rgba(0,237,100,0.3);
+    background: rgba(0,237,100,0.03);
     transform: translateY(-2px);
   }
 

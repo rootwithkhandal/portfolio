@@ -19,9 +19,9 @@ const links = [
     svg: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10.705 0C8.53 0 6.647 1.383 5.82 3.35a4.233 4.233 0 0 0-.828-.082 4.256 4.256 0 0 0-4.256 4.256 4.256 4.256 0 0 0 4.256 4.256h9.013a3.633 3.633 0 0 0 3.633-3.633 3.633 3.633 0 0 0-3.633-3.633 3.62 3.62 0 0 0-.424.025C13.14 1.78 12.07 0 10.705 0zm-.234 13.3a5.997 5.997 0 0 0-5.997 5.998A5.997 5.997 0 0 0 10.47 25.3a5.997 5.997 0 0 0 5.998-5.997 5.997 5.997 0 0 0-5.997-5.998v-.005zm0 1.95a4.048 4.048 0 0 1 4.048 4.048 4.048 4.048 0 0 1-4.048 4.047 4.048 4.048 0 0 1-4.047-4.047 4.048 4.048 0 0 1 4.047-4.048z"/></svg>`,
   },
   {
-    href: 'mailto:contact@khandal.me',
+    href: 'mailto:contact@khandal.tech',
     platform: 'Email',
-    handle: 'contact@khandal.me',
+    handle: 'contact@khandal.tech',
     svg: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>`,
   },
 ];
@@ -102,21 +102,21 @@ const links = [
     text-decoration: none;
     padding: 12px 16px;
     border: 0.5px solid rgba(255,255,255,0.07);
-    border-radius: 3px;
+    border-radius: 12px;
     background: rgba(255,255,255,0.02);
     transition: background 0.2s, border-color 0.2s, transform 0.2s;
   }
   .contact-link:hover {
-    background: rgba(255,200,50,0.05);
-    border-color: rgba(255,200,50,0.25);
+    background: rgba(0,237,100,0.05);
+    border-color: rgba(0,237,100,0.25);
     transform: translateX(6px);
   }
 
   .contact-icon {
     width: 36px; height: 36px;
     border-radius: 50%;
-    background: rgba(255,200,50,0.08);
-    border: 1px solid rgba(255,200,50,0.2);
+    background: rgba(0,237,100,0.08);
+    border: 1px solid rgba(0,237,100,0.2);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -144,7 +144,7 @@ const links = [
   .contact-avatar-wrap {
     width: clamp(120px, 15vw, 180px);
     height: clamp(120px, 15vw, 180px);
-    border-radius: 50%;
+    border-radius: 12px;
     border: 1px solid var(--border);
     overflow: hidden;
     position: relative;

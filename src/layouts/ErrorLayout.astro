@@ -16,7 +16,7 @@ const { code, title, message, hint } = Astro.props;
   <meta name="robots" content="noindex, nofollow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;600&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 </head>
 <body>
@@ -76,17 +76,17 @@ const { code, title, message, hint } = Astro.props;
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --bg:     #060c14;
-    --accent: #FFC832;
-    --accent-rgb: 255, 200, 50;
-    --accent-hover: #FFD95C;
+    --bg:     #001e2b;
+    --accent: #00ed64;
+    --accent-rgb: 0, 237, 100;
+    --accent-hover: #00b545;
     --red:    #e53935;
-    --text:   #e8eaf0;
-    --muted:  #6b7a8d;
-    --border: rgba(255,200,50,0.15);
-    --font-display: 'Bebas Neue', sans-serif;
-    --font-label:   'Rajdhani', sans-serif;
-    --font-body:    'Space Grotesk', sans-serif;
+    --text:   #ffffff;
+    --muted:  #a8b3bc;
+    --border: rgba(0,237,100,0.15);
+    --font-display: 'DM Sans', sans-serif;
+    --font-label:   'DM Sans', sans-serif;
+    --font-body:    'DM Sans', sans-serif;
   }
 
   html { font-size: 110%; scroll-behavior: smooth; }
@@ -132,7 +132,7 @@ const { code, title, message, hint } = Astro.props;
     transform: translate(-50%, -50%);
     font-family: var(--font-display);
     font-size: clamp(12rem, 35vw, 32rem);
-    color: rgba(255,200,50,0.03);
+    color: rgba(0,237,100,0.03);
     letter-spacing: -0.02em;
     pointer-events: none;
     user-select: none;
@@ -201,7 +201,7 @@ const { code, title, message, hint } = Astro.props;
     font-size: 0.72rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: rgba(255,200,50,0.5);
+    color: rgba(0,237,100,0.5);
     margin-bottom: 2.5rem;
   }
 
@@ -222,7 +222,7 @@ const { code, title, message, hint } = Astro.props;
     background: var(--accent);
     text-decoration: none;
     padding: 8px 20px;
-    border-radius: 2px;
+    border-radius: 9999px;
     transition: opacity 0.2s, transform 0.2s;
   }
   .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
@@ -235,19 +235,19 @@ const { code, title, message, hint } = Astro.props;
     color: var(--accent);
     text-decoration: none;
     padding: 8px 20px;
-    border: 1px solid rgba(255,200,50,0.3);
-    border-radius: 2px;
-    background: rgba(255,200,50,0.05);
+    border: 1px solid rgba(0,237,100,0.3);
+    border-radius: 9999px;
+    background: rgba(0,237,100,0.05);
     transition: background 0.2s, border-color 0.2s;
   }
-  .btn-ghost:hover { background: rgba(255,200,50,0.12); border-color: rgba(255,200,50,0.6); }
+  .btn-ghost:hover { background: rgba(0,237,100,0.12); border-color: rgba(0,237,100,0.6); }
 
   /* Terminal */
   .terminal {
     border: 0.5px solid var(--border);
-    border-radius: 4px;
+    border-radius: 12px;
     overflow: hidden;
-    background: #040a10;
+    background: #001520;
   }
 
   .terminal-bar {
@@ -311,7 +311,7 @@ const { code, title, message, hint } = Astro.props;
     font-family: var(--font-display);
     font-size: 1.3rem;
     letter-spacing: 0.08em;
-    color: rgba(255,200,50,0.4);
+    color: rgba(0,237,100,0.4);
     text-decoration: none;
   }
 

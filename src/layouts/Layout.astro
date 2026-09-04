@@ -58,7 +58,7 @@ const ogImage = `${canonical}/profile.png`;
   <meta name="robots" content="index, follow" />
 
   <!-- Theme colour (browser chrome) -->
-  <meta name="theme-color" content="#060c14" />
+  <meta name="theme-color" content="#001e2b" />
 
   <!-- Favicon -->
   <link rel="icon"             href="/favicon.svg"          type="image/svg+xml" />
@@ -68,7 +68,7 @@ const ogImage = `${canonical}/profile.png`;
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet" />
 </head>
 <body>
   <slot />
@@ -81,22 +81,22 @@ const ogImage = `${canonical}/profile.png`;
 
   /* ── Design tokens ── */
   :root {
-    --bg:      #060c14;
-    --bg2:     #0a1220;
-    --bg3:     #0d1828;
-    --accent:  #FFC832;
-    --accent-rgb: 255, 200, 50;
-    --accent-hover: #FFD95C;
-    --accent2: #e53935;
-    --text:    #e8eaf0;
-    --muted:   #6b7a8d;
-    --border:  rgba(255, 200, 50, 0.15);
+    --bg:      #001e2b;
+    --bg2:     #003d4f;
+    --bg3:     #002a3a;
+    --accent:  #00ed64;
+    --accent-rgb: 0, 237, 100;
+    --accent-hover: #00b545;
+    --accent2: #fa6e39;
+    --text:    #ffffff;
+    --muted:   #a8b3bc;
+    --border:  rgba(0, 237, 100, 0.15);
     --nav-h:   64px;
 
     /* Font roles */
-    --font-display: 'Bebas Neue', sans-serif;
-    --font-label:   'Rajdhani', sans-serif;
-    --font-body:    'Space Grotesk', sans-serif;
+    --font-display: 'DM Sans', sans-serif;
+    --font-label:   'DM Sans', sans-serif;
+    --font-body:    'DM Sans', sans-serif;
   }
 
   html {
@@ -129,7 +129,7 @@ const ogImage = `${canonical}/profile.png`;
   .cursor-ring {
     position: fixed;
     width: 36px; height: 36px;
-    border: 1.5px solid rgba(255,200,50,0.55);
+    border: 1.5px solid rgba(0,237,100,0.55);
     border-radius: 50%;
     pointer-events: none;
     z-index: 9998;

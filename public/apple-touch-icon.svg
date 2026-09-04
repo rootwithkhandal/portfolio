@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
-  <rect width="180" height="180" rx="32" fill="#060c14"/>
+  <rect width="180" height="180" rx="32" fill="#001e2b"/>
   <text
     x="90" y="122"
-    font-family="'Bebas Neue', 'Arial Black', sans-serif"
+    font-family="'DM Sans', 'Arial Black', sans-serif"
     font-size="96"
     font-weight="700"
-    fill="#4fc3f7"
+    fill="#00ed64"
     text-anchor="middle"
     letter-spacing="4"
   >0x</text>
-  <rect width="176" height="176" x="2" y="2" rx="30" fill="none" stroke="#4fc3f7" stroke-width="2" opacity="0.2"/>
+  <rect width="176" height="176" x="2" y="2" rx="30" fill="none" stroke="#00ed64" stroke-width="2" opacity="0.2"/>
 </svg>

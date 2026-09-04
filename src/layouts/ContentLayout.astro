@@ -1,4 +1,6 @@
 ---
+import Layout from './Layout.astro';
+import Nav from '../components/Nav.astro';
 interface Props {
   title: string;
   tag: string;
@@ -19,39 +21,23 @@ const {
 } = Astro.props;
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{title} · Priyansh Khandal</title>
-  <meta name="description" content={title} />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-</head>
-<body>
-
-<header>
-  <a href="/" class="logo">0x</a>
-  <nav>
-    <a href={backHref} class="back-link">
-      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M10 4L6 8l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      {backLabel}
-    </a>
-    <a href={externalUrl} target="_blank" rel="noopener noreferrer" class="external-link">
-      {externalLabel}
-      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </a>
-  </nav>
-</header>
-
-<main>
+<Layout>
+  <Nav />
+  <main>
+    <div class="post-actions" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+      <a href={backHref} class="back-link">
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M10 4L6 8l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        {backLabel}
+      </a>
+      <a href={externalUrl} target="_blank" rel="noopener noreferrer" class="external-link">
+        {externalLabel}
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
   <div class="post-header">
     <span class="post-tag" style={`color:${tagColor};border-color:${tagColor}30;background:${tagColor}0d`}>{tag}</span>
     <p class="post-meta">{meta}</p>
@@ -66,68 +52,10 @@ const {
   <span>Priyansh Khandal · 2026</span>
 </footer>
 
-</body>
-</html>
+</Layout>
 
 <style is:global>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-  :root {
-    --bg:     #060c14;
-    --bg2:    #0a1220;
-    --accent: #FFC832;
-    --accent-rgb: 255, 200, 50;
-    --accent-hover: #FFD95C;
-    --text:   #e8eaf0;
-    --muted:  #6b7a8d;
-    --border: rgba(255,200,50,0.15);
-    --font-display: 'Bebas Neue', sans-serif;
-    --font-label:   'Rajdhani', sans-serif;
-    --font-body:    'Space Grotesk', sans-serif;
-  }
-
-  html { font-size: 110%; scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font-body);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* Header */
-  header {
-    position: sticky;
-    top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 clamp(1rem, 5vw, 3rem);
-    height: 60px;
-    background: rgba(6,12,20,0.85);
-    backdrop-filter: blur(14px);
-    border-bottom: 0.5px solid var(--border);
-    z-index: 100;
-    gap: 1rem;
-  }
-
-  .logo {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    letter-spacing: 0.08em;
-    color: var(--accent);
-    text-decoration: none;
-    text-shadow: 0 0 20px rgba(255,200,50,0.4);
-    flex-shrink: 0;
-  }
-
-  header nav {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-  }
 
   .back-link {
     display: inline-flex;
@@ -155,15 +83,15 @@ const {
     color: var(--accent);
     text-decoration: none;
     padding: 5px 12px;
-    border: 1px solid rgba(255,200,50,0.3);
-    border-radius: 2px;
-    background: rgba(255,200,50,0.05);
+    border: 1px solid rgba(0,237,100,0.3);
+    border-radius: 9999px;
+    background: rgba(0,237,100,0.05);
     transition: background 0.2s, border-color 0.2s;
     white-space: nowrap;
   }
   .external-link:hover {
-    background: rgba(255,200,50,0.12);
-    border-color: rgba(255,200,50,0.6);
+    background: rgba(0,237,100,0.12);
+    border-color: rgba(0,237,100,0.6);
   }
   .external-link svg { width: 12px; height: 12px; flex-shrink: 0; }
 
@@ -190,7 +118,7 @@ const {
     letter-spacing: 0.2em;
     text-transform: uppercase;
     padding: 3px 10px;
-    border-radius: 2px;
+    border-radius: 6px;
     border: 1px solid;
     margin-bottom: 1rem;
   }
@@ -236,7 +164,7 @@ const {
   .prose a {
     color: var(--accent);
     text-decoration: none;
-    border-bottom: 1px solid rgba(255,200,50,0.3);
+    border-bottom: 1px solid rgba(0,237,100,0.3);
     transition: border-color 0.2s;
   }
   .prose a:hover { border-color: var(--accent); }
@@ -244,17 +172,17 @@ const {
   .prose code {
     font-family: 'Fira Code', 'Cascadia Code', monospace;
     font-size: 0.85em;
-    background: rgba(255,200,50,0.08);
-    border: 1px solid rgba(255,200,50,0.15);
-    border-radius: 3px;
+    background: rgba(0,237,100,0.08);
+    border: 1px solid rgba(0,237,100,0.15);
+    border-radius: 6px;
     padding: 1px 6px;
     color: var(--accent);
   }
 
   .prose pre {
-    background: #0a1520;
-    border: 1px solid rgba(255,200,50,0.12);
-    border-radius: 4px;
+    background: #002a3a;
+    border: 1px solid rgba(0,237,100,0.12);
+    border-radius: 12px;
     padding: 1.25rem 1.5rem;
     overflow-x: auto;
     margin: 1.5rem 0;
@@ -289,7 +217,7 @@ const {
 
   .prose img {
     max-width: 100%;
-    border-radius: 4px;
+    border-radius: 12px;
     border: 0.5px solid var(--border);
     margin: 1.5rem 0;
   }
@@ -311,7 +239,7 @@ const {
     text-transform: uppercase;
     font-size: 0.65rem;
     color: var(--accent);
-    background: rgba(255,200,50,0.05);
+    background: rgba(0,237,100,0.05);
   }
 
   /* Footer */
@@ -332,7 +260,6 @@ const {
   footer .back-link { font-size: 0.65rem; }
 
   @media (max-width: 480px) {
-    header nav { gap: 0.75rem; }
     .external-link { padding: 4px 8px; font-size: 0.65rem; }
   }
 </style>
