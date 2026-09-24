@@ -4,14 +4,14 @@ import Nav from '../../components/Nav.astro';
 import { projects } from '../../data/projects';
 
 const tagColors: Record<string, string> = {
-  'Bug Bounty':    '#00ed64',
-  'AI Red-Team':   '#ff8a80',
-  'Blockchain':    '#b9f6ca',
-  'SOC':           '#ffcc80',
-  'OPSEC':         '#b2dfdb',
-  'Multi-Model':   '#e1bee7',
-  'Nix / DevOps':  '#b2ebf2',
-  'Analytics':     '#e1bee7',
+  'Bug Bounty':    '#ea9216',
+  'AI Red-Team':   '#f26d6f',
+  'Blockchain':    '#5fc08f',
+  'SOC':           '#6cabe6',
+  'OPSEC':         '#b3bdc5',
+  'Multi-Model':   '#b3bdc5',
+  'Nix / DevOps':  '#6cabe6',
+  'Analytics':     '#b3bdc5',
 };
 
 const tags = ['All', ...new Set(projects.map(p => p.tag))];
@@ -43,7 +43,7 @@ const currentYear = new Date().getFullYear();
     <!-- Projects grid -->
     <div class="projects-grid" id="projectsGrid">
       {projects.map(project => {
-        const color = tagColors[project.tag] ?? '#00ed64';
+        const color = tagColors[project.tag] ?? '#ea9216';
         const repoName = project.githubRepo.split('/')[1] ?? project.slug;
         return (
           <a
@@ -192,7 +192,7 @@ const currentYear = new Date().getFullYear();
     color: var(--muted);
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 9999px;
+    border-radius: 4px;
     padding: 5px 14px;
     cursor: pointer;
     transition: color 0.2s, background 0.2s, border-color 0.2s;
@@ -200,13 +200,13 @@ const currentYear = new Date().getFullYear();
   }
   .filter-btn:hover {
     color: var(--accent);
-    border-color: rgba(0,237,100,0.3);
-    background: rgba(0,237,100,0.05);
+    border-color: rgba(234,146,22,0.3);
+    background: rgba(234,146,22,0.05);
   }
   .filter-btn.active {
     color: var(--accent);
-    background: rgba(0,237,100,0.1);
-    border-color: rgba(0,237,100,0.4);
+    background: rgba(234,146,22,0.1);
+    border-color: rgba(234,146,22,0.4);
   }
 
   /* ── Grid ── */
@@ -230,10 +230,10 @@ const currentYear = new Date().getFullYear();
     transition: border-color 0.3s, transform 0.3s, background 0.3s;
   }
   .project-card:hover {
-    border-color: rgba(0,237,100,0.3);
-    background: rgba(0,237,100,0.02);
+    border-color: rgba(234,146,22,0.3);
+    background: rgba(234,146,22,0.02);
     transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.2), 0 0 0 1px rgba(0,237,100,0.1);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2), 0 0 0 1px rgba(234,146,22,0.1);
   }
 
   /* top colour bar */

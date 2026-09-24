@@ -1,13 +1,13 @@
 ---
 const skills = [
-  { label: 'Burp Suite Pro',    color: '#ff8a80' },
-  { label: 'Linux',             color: '#00ed64' },
-  { label: 'Python',            color: '#b9f6ca' },
-  { label: 'Foundry',           color: '#ffcc80' },
-  { label: 'Ollama / LLMs',     color: '#e1bee7' },
-  { label: 'WireGuard',         color: '#b2dfdb' },
-  { label: 'Slither',           color: '#f8bbd0' },
-  { label: 'ProjectDiscovery',  color: '#b2ebf2' },
+  { label: 'Burp Suite Pro',    color: '#f26d6f' },
+  { label: 'Linux',             color: '#ea9216' },
+  { label: 'Python',            color: '#5fc08f' },
+  { label: 'Foundry',           color: '#6cabe6' },
+  { label: 'Ollama / LLMs',     color: '#b3bdc5' },
+  { label: 'WireGuard',         color: '#b3bdc5' },
+  { label: 'Slither',           color: '#f26d6f' },
+  { label: 'ProjectDiscovery',  color: '#6cabe6' },
 ];
 
 const proficiency = [
@@ -22,42 +22,42 @@ const certificates = [
     name: 'Certified SOC Analyst (CSA)',
     issuer: 'EC-Council',
     year: '2026',
-    color: '#00ed64',
+    color: '#ea9216',
     url: 'https://www.eccouncil.org/programs/certified-soc-analyst-csa/',
   },
   {
     name: 'IBM Cybersecurity Analyst Certificate',
     issuer: 'IBM / Coursera',
     year: '2025',
-    color: '#b9f6ca',
+    color: '#5fc08f',
     url: 'https://grow.google/certificates/cybersecurity/',
   },
   {
     name: 'Cybersecurity 101',
     issuer: 'TryHackMe',
     year: '2025',
-    color: '#ffcc80',
+    color: '#6cabe6',
     url: 'https://tryhackme.com/path/outline/jrpenetrationtester',
   },
   {
     name: 'AI for Anomaly Detection',
     issuer: 'Nvidia',
     year: '2025',
-    color: '#e1bee7',
+    color: '#b3bdc5',
     url: 'https://tryhackme.com/path/outline/web',
   },
   {
     name: 'Blockchain Security Basics',
     issuer: 'Immunefi',
     year: '2025',
-    color: '#f8bbd0',
+    color: '#f26d6f',
     url: 'https://immunefi.com',
   },
   {
     name: 'Introduction to AI Red-Teaming',
     issuer: 'Microsoft / PyRIT',
     year: '2025',
-    color: '#b2dfdb',
+    color: '#b3bdc5',
     url: 'https://github.com/Azure/PyRIT',
   },
 ];
@@ -193,7 +193,7 @@ const certificates = [
   .profile-name-tag {
     position: absolute;
     bottom: -1px; left: 0; right: 0;
-    background: rgba(6,12,20,0.85);
+    background: rgba(31,36,42,0.85);
     border-top: 1px solid var(--border);
     padding: 12px 16px;
     text-align: center;
@@ -247,21 +247,21 @@ const certificates = [
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    background: rgba(0,237,100,0.06);
-    border: 1px solid rgba(0,237,100,0.18);
-    border-radius: 9999px;
+    background: rgba(234,146,22,0.06);
+    border: 1px solid rgba(234,146,22,0.18);
+    border-radius: 2px;
     padding: 6px 12px;
-    font-family: var(--font-label);
+    font-family: var(--font-mono);
     font-size: clamp(0.7rem, 1.3vw, 0.78rem);
-    font-weight: 600;
-    letter-spacing: 0.06em;
+    font-weight: 500;
+    letter-spacing: 0.04em;
     color: var(--accent);
     transition: background 0.2s, border-color 0.2s;
     cursor: default;
   }
   .skill-pill:hover {
-    background: rgba(0,237,100,0.12);
-    border-color: rgba(0,237,100,0.4);
+    background: rgba(234,146,22,0.12);
+    border-color: rgba(234,146,22,0.4);
   }
   .skill-dot {
     width: 7px; height: 7px;
@@ -371,10 +371,10 @@ const certificates = [
     transition: border-color 0.3s, transform 0.3s, background 0.3s;
   }
   .cert-card:hover {
-    border-color: rgba(0,237,100,0.3);
-    background: rgba(0,237,100,0.03);
+    border-color: rgba(234,146,22,0.3);
+    background: rgba(234,146,22,0.03);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2), 0 0 0 1px rgba(0,237,100,0.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2), 0 0 0 1px rgba(234,146,22,0.1);
   }
 
 

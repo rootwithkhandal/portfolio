@@ -5,21 +5,26 @@ interface Props {
   canonical?:   string;
   extraSchema?: object | object[];
 }
+
+const siteUrl = 'https://khandal.tech';
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const defaultCanonical = currentPath === '/' ? siteUrl : `${siteUrl}${currentPath}`;
+
 const {
   title       = 'Priyansh Khandal · Cybersecurity Portfolio',
   description = 'Priyansh Khandal - Cybersecurity student, SOC analyst, and penetration tester specialising in bug bounty, AI red-teaming, crypto investigations, and blockchain smart contract auditing.',
-  canonical   = 'https://khandal.tech',
+  canonical   = defaultCanonical,
   extraSchema,
 } = Astro.props;
 
-const ogImage = `${canonical}/profile.png`;
+const ogImage = `${siteUrl}/profile.png`;
 
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
-  "@id": `${canonical}/#person`,
+  "@id": `${siteUrl}/#person`,
   "name": "Priyansh Khandal",
-  "url": canonical,
+  "url": siteUrl,
   "email": "mailto:priyansh@khandal.tech",
   "image": ogImage,
   "jobTitle": "Cybersecurity Researcher & SOC Analyst",
@@ -43,7 +48,7 @@ const personSchema = {
 const profilePageSchema = {
   "@context": "https://schema.org",
   "@type": "ProfilePage",
-  "mainEntity": { "@id": `${canonical}/#person` },
+  "mainEntity": { "@id": `${siteUrl}/#person` },
   "dateCreated": "2026-01-01T00:00:00Z",
   "dateModified": new Date().toISOString()
 };
@@ -94,7 +99,7 @@ if (extraSchema) {
   <meta name="robots" content="index, follow" />
 
   <!-- Theme colour (browser chrome) -->
-  <meta name="theme-color" content="#001e2b" />
+  <meta name="theme-color" content="#313841" />
 
   <!-- Favicon -->
   <link rel="icon"             href="/favicon.svg"          type="image/svg+xml" />
@@ -104,9 +109,13 @@ if (extraSchema) {
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
 </head>
 <body>
+  <!-- Custom cursor (pointer devices only) -->
+  <div class="cursor"      id="cursor"     aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
   <!-- Ambient Orbs -->
   <div class="ambient-orb orb-1" aria-hidden="true"></div>
   <div class="ambient-orb orb-2" aria-hidden="true"></div>
@@ -114,28 +123,105 @@ if (extraSchema) {
 </body>
 </html>
 
+<script>
+  /* ── Global custom cursor (pointer devices only) ── */
+  const cursor = document.getElementById('cursor') as HTMLElement;
+  const ring   = document.getElementById('cursorRing') as HTMLElement;
+  const hasPointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  if (hasPointer && cursor && ring) {
+    let mx = -200, my = -200;
+    let rx = -200, ry = -200;
+
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cursor.style.left = mx + 'px';
+      cursor.style.top  = my + 'px';
+    });
+
+    (function animRing() {
+      rx += (mx - rx) * 0.11;
+      ry += (my - ry) * 0.11;
+      ring.style.left = rx + 'px';
+      ring.style.top  = ry + 'px';
+      requestAnimationFrame(animRing);
+    })();
+
+    document.addEventListener('mouseover', e => {
+      const target = (e.target as HTMLElement)?.closest?.('a, button, [role="button"], input, select, textarea');
+      if (target) {
+        cursor.style.width   = '5px';
+        cursor.style.height  = '5px';
+        cursor.style.opacity = '0.5';
+        ring.style.width     = '52px';
+        ring.style.height    = '52px';
+        ring.style.borderColor = 'rgba(234,146,22,0.8)';
+      }
+    });
+
+    document.addEventListener('mouseout', e => {
+      const target = (e.target as HTMLElement)?.closest?.('a, button, [role="button"], input, select, textarea');
+      if (target) {
+        cursor.style.width   = '10px';
+        cursor.style.height  = '10px';
+        cursor.style.opacity = '1';
+        ring.style.width     = '36px';
+        ring.style.height    = '36px';
+        ring.style.borderColor = 'rgba(234,146,22,0.55)';
+      }
+    });
+
+    document.addEventListener('mousedown', () => {
+      cursor.style.transform = 'translate(-50%,-50%) scale(0.7)';
+      ring.style.transform   = 'translate(-50%,-50%) scale(0.85)';
+    });
+    document.addEventListener('mouseup', () => {
+      cursor.style.transform = 'translate(-50%,-50%) scale(1)';
+      ring.style.transform   = 'translate(-50%,-50%) scale(1)';
+    });
+  }
+</script>
+
 <style is:global>
   /* ── Reset ── */
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   /* ── Design tokens ── */
   :root {
-    --bg:      #001e2b;
-    --bg2:     #003d4f;
-    --bg3:     #002a3a;
-    --accent:  #00ed64;
-    --accent-rgb: 0, 237, 100;
-    --accent-hover: #00b545;
-    --accent2: #fa6e39;
-    --text:    #ffffff;
-    --muted:   #a8b3bc;
-    --border:  rgba(0, 237, 100, 0.15);
+    /* ── Surface palette (dark-slate) ── */
+    --bg:      #313841;          /* secondary – base dark canvas */
+    --bg2:     #3a4750;          /* primary   – raised dark surface */
+    --bg3:     #1f242a;          /* ink       – deepest surface */
+
+    /* ── Accent (amber) ── */
+    --accent:       #ea9216;
+    --accent-rgb:   234, 146, 22;
+    --accent-hover: #c97a0a;     /* pressed */
+    --accent-deep:  #8f4d00;     /* text-safe on light bg */
+    --accent-wash:  #373128;     /* tinted surface hint */
+
+    /* ── Text ── */
+    --text:    #eeeeee;          /* tertiary – readable text on dark */
+    --muted:   #b3bdc5;          /* on-dark-muted */
+    --steel:   #56636d;          /* secondary text / captions */
+
+    /* ── Borders ── */
+    --border:       rgba(79, 93, 104, 0.5);  /* hairline-dark softened */
+    --hairline-dark:#4f5d68;
+
+    /* ── Status hues ── */
+    --status-success: #5fc08f;
+    --status-danger:  #f26d6f;
+    --status-info:    #6cabe6;
+
+    /* ── Sizing ── */
     --nav-h:   64px;
 
-    /* Font roles */
-    --font-display: 'DM Sans', sans-serif;
-    --font-label:   'DM Sans', sans-serif;
-    --font-body:    'DM Sans', sans-serif;
+    /* ── Font roles (IBM Plex family) ── */
+    --font-display: 'IBM Plex Sans Condensed', 'Arial Narrow', sans-serif;
+    --font-label:   'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-body:    'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono:    'IBM Plex Mono', 'JetBrains Mono', 'SF Mono', Menlo, monospace;
   }
 
   html {
@@ -150,7 +236,6 @@ if (extraSchema) {
     color: var(--text);
     font-family: var(--font-body);
     overflow-x: hidden;
-    cursor: none;           /* hide default — custom cursor active on pointer devices */
   }
 
   /* ── Ambient Orbs ── */
@@ -170,7 +255,7 @@ if (extraSchema) {
   .orb-2 {
     bottom: -200px; right: -150px;
     width: 600px; height: 600px;
-    background: #008855;
+    background: #3a4750;
   }
 
   /* ── Custom cursor (pointer devices only) ── */
@@ -190,7 +275,7 @@ if (extraSchema) {
   .cursor-ring {
     position: fixed;
     width: 36px; height: 36px;
-    border: 1.5px solid rgba(0,237,100,0.55);
+    border: 1.5px solid rgba(234,146,22,0.55);
     border-radius: 50%;
     pointer-events: none;
     z-index: 9998;
@@ -199,10 +284,21 @@ if (extraSchema) {
     transition: width 0.22s, height 0.22s, border-color 0.22s;
     will-change: left, top;
   }
-  /* hide cursor elements on touch devices */
-  @media (hover: none) {
-    .cursor, .cursor-ring { display: none; }
-    body { cursor: auto; }
+  /* hide default cursor only on devices with a fine pointer (mouse/trackpad) */
+  @media (hover: hover) and (pointer: fine) {
+    body, a, button, [role="button"] {
+      cursor: none;
+    }
+  }
+
+  /* hide custom cursor elements on touch/coarse devices */
+  @media (hover: none), (pointer: coarse) {
+    .cursor, .cursor-ring {
+      display: none !important;
+    }
+    body, a, button, [role="button"] {
+      cursor: auto !important;
+    }
   }
 
   /* ── Shared section shell ── */

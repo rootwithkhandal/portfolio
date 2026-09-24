@@ -12,9 +12,9 @@ export interface Research {
 
 export const researches: Research[] = [
   {
-    slug: 'recon-pipeline',
+    slug: 'the-android-hardening',
     tag: 'Bug Bounty',
-    tagColor: '#00ed64',
+    tagColor: '#ea9216',
     title: 'The Hardening guide for Android',
     excerpt: 'For anyone running pentesting, bug bounty, or blockchain workflows off a daily-driver Android phone - no custom ROM, no root, no bootloader unlock. Just discipline.',
     date: 'July 2026',
@@ -24,7 +24,7 @@ export const researches: Research[] = [
   {
     slug: 'recon-pipeline',
     tag: 'Bug Bounty',
-    tagColor: '#00ed64',
+    tagColor: '#ea9216',
     title: 'Building a Recon Pipeline with Subfinder, Httpx & Nuclei',
     excerpt: 'How I automated asset discovery and vulnerability scanning into a single declarative NixOS-managed pipeline that runs on every scope update.',
     date: 'Mar 2026',
@@ -34,7 +34,7 @@ export const researches: Research[] = [
   {
     slug: 'llm-jailbreak',
     tag: 'AI Red-Team',
-    tagColor: '#ff8a80',
+    tagColor: '#f26d6f',
     title: 'Jailbreaking LLMs with Garak - What Actually Works in 2026',
     excerpt: 'A practical walkthrough of multi-turn prompt injection, role-play escalation, and token smuggling techniques tested against GPT-4o and Llama 3.',
     date: 'Feb 2026',
@@ -44,7 +44,7 @@ export const researches: Research[] = [
   {
     slug: 'reentrancy-attacks',
     tag: 'Blockchain',
-    tagColor: '#b9f6ca',
+    tagColor: '#5fc08f',
     title: 'Reentrancy Attacks - From Classic to Cross-Function Variants',
     excerpt: 'Deep dive into reentrancy patterns in Solidity, how Slither and Foundry fuzz tests catch them, and a real Code4rena finding walkthrough.',
     date: 'Jan 2026',
@@ -54,7 +54,7 @@ export const researches: Research[] = [
   {
     slug: 'siem-triage',
     tag: 'SOC / Blue Team',
-    tagColor: '#ffcc80',
+    tagColor: '#6cabe6',
     title: 'SIEM Alert Triage at Scale - Cutting False Positives by 60%',
     excerpt: 'Lessons from building correlation rules, tuning Sigma detections, and using Python to auto-enrich alerts with threat intel feeds.',
     date: 'Dec 2025',
@@ -64,7 +64,7 @@ export const researches: Research[] = [
   {
     slug: 'nixos-wireguard-opsec',
     tag: 'OPSEC',
-    tagColor: '#b2dfdb',
+    tagColor: '#b3bdc5',
     title: 'Declarative OPSEC - Managing a Kill-Switch WireGuard Setup with NixOS',
     excerpt: 'How I use Home Manager and WireGuard to enforce a network kill-switch, compartmentalised identities, and reproducible security tooling.',
     date: 'Nov 2025',
@@ -74,7 +74,7 @@ export const researches: Research[] = [
   {
     slug: 'ssrf-aws-metadata',
     tag: 'Web Hacking',
-    tagColor: '#e1bee7',
+    tagColor: '#b3bdc5',
     title: 'SSRF to Internal AWS Metadata - A Bug Bounty Case Study',
     excerpt: 'Step-by-step breakdown of chaining an open redirect with a blind SSRF to reach the EC2 metadata endpoint and escalate to credential theft.',
     date: 'Oct 2025',

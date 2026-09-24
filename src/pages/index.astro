@@ -12,9 +12,6 @@ const currentYear = new Date().getFullYear();
 ---
 
 <Layout extraSchema={faqSchema}>
-  <!-- Custom cursor (pointer devices only) -->
-  <div class="cursor"      id="cursor"     aria-hidden="true"></div>
-  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
 
   <Nav />
   <Hero />
@@ -61,7 +58,7 @@ const currentYear = new Date().getFullYear();
     font-family: var(--font-display);
     font-size: clamp(1rem, 2vw, 1.2rem);
     letter-spacing: 0.1em;
-    color: rgba(0,237,100,0.4);
+    color: rgba(234,146,22,0.4);
   }
 
   @media (max-width: 480px) {
@@ -71,67 +68,7 @@ const currentYear = new Date().getFullYear();
 
 <script>
   /* ─────────────────────────────────────────
-     1. CUSTOM CURSOR  (pointer devices only)
-  ───────────────────────────────────────── */
-  const cursor = document.getElementById('cursor') as HTMLElement;
-  const ring   = document.getElementById('cursorRing') as HTMLElement;
-
-  // Only activate on devices that support hover (not touch-only)
-  const hasPointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-
-  if (hasPointer && cursor && ring) {
-    let mx = -200, my = -200;   // start off-screen
-    let rx = -200, ry = -200;
-
-    // Dot follows mouse instantly
-    document.addEventListener('mousemove', e => {
-      mx = e.clientX; my = e.clientY;
-      cursor.style.left = mx + 'px';
-      cursor.style.top  = my + 'px';
-    });
-
-    // Ring trails with lerp
-    (function animRing() {
-      rx += (mx - rx) * 0.11;
-      ry += (my - ry) * 0.11;
-      ring.style.left = rx + 'px';
-      ring.style.top  = ry + 'px';
-      requestAnimationFrame(animRing);
-    })();
-
-    // Hover state: dot shrinks, ring expands
-    document.querySelectorAll('a, button, [role="button"]').forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        cursor.style.width   = '5px';
-        cursor.style.height  = '5px';
-        cursor.style.opacity = '0.5';
-        ring.style.width     = '52px';
-        ring.style.height    = '52px';
-        ring.style.borderColor = 'rgba(0,237,100,0.8)';
-      });
-      el.addEventListener('mouseleave', () => {
-        cursor.style.width   = '10px';
-        cursor.style.height  = '10px';
-        cursor.style.opacity = '1';
-        ring.style.width     = '36px';
-        ring.style.height    = '36px';
-        ring.style.borderColor = 'rgba(0,237,100,0.55)';
-      });
-    });
-
-    // Click pulse
-    document.addEventListener('mousedown', () => {
-      cursor.style.transform = 'translate(-50%,-50%) scale(0.7)';
-      ring.style.transform   = 'translate(-50%,-50%) scale(0.85)';
-    });
-    document.addEventListener('mouseup', () => {
-      cursor.style.transform = 'translate(-50%,-50%) scale(1)';
-      ring.style.transform   = 'translate(-50%,-50%) scale(1)';
-    });
-  }
-
-  /* ─────────────────────────────────────────
-     2. SCROLL-TRIGGERED FADE-UP  (.reveal)
+     SCROLL-TRIGGERED FADE-UP  (.reveal)
   ───────────────────────────────────────── */
   const revealEls = document.querySelectorAll<HTMLElement>('.reveal');
 

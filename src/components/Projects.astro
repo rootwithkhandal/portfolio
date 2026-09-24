@@ -6,17 +6,17 @@ const cardMeta: Record<string, { cls: string; style?: string; svg: string }> = {
   'recon-pipeline': {
     cls: 'span-v p1',
     svg: `<svg class="card-deco" viewBox="0 0 200 400" xmlns="http://www.w3.org/2000/svg">
-      <rect x="20" y="20" width="160" height="20" fill="rgba(0,237,100,0.08)" rx="2"/>
-      <rect x="20" y="50" width="120" height="8" fill="rgba(0,237,100,0.05)" rx="1"/>
-      <rect x="20" y="66" width="140" height="8" fill="rgba(0,237,100,0.05)" rx="1"/>
-      <rect x="20" y="82" width="100" height="8" fill="rgba(0,237,100,0.05)" rx="1"/>
-      <rect x="20" y="110" width="160" height="1" fill="rgba(0,237,100,0.1)"/>
-      <text x="20" y="140" font-size="11" fill="rgba(0,237,100,0.25)" font-family="monospace">$ nmap -sV -A</text>
-      <text x="20" y="158" font-size="11" fill="rgba(0,237,100,0.18)" font-family="monospace">  target.io</text>
-      <text x="20" y="180" font-size="11" fill="rgba(0,237,100,0.12)" font-family="monospace">PORT  STATE</text>
-      <text x="20" y="198" font-size="11" fill="rgba(0,237,100,0.10)" font-family="monospace">80    open</text>
-      <text x="20" y="216" font-size="11" fill="rgba(0,237,100,0.10)" font-family="monospace">443   open</text>
-      <text x="20" y="234" font-size="11" fill="rgba(0,237,100,0.08)" font-family="monospace">8443  open</text>
+      <rect x="20" y="20" width="160" height="20" fill="rgba(234,146,22,0.08)" rx="2"/>
+      <rect x="20" y="50" width="120" height="8" fill="rgba(234,146,22,0.05)" rx="1"/>
+      <rect x="20" y="66" width="140" height="8" fill="rgba(234,146,22,0.05)" rx="1"/>
+      <rect x="20" y="82" width="100" height="8" fill="rgba(234,146,22,0.05)" rx="1"/>
+      <rect x="20" y="110" width="160" height="1" fill="rgba(234,146,22,0.1)"/>
+      <text x="20" y="140" font-size="11" fill="rgba(234,146,22,0.25)" font-family="monospace">$ nmap -sV -A</text>
+      <text x="20" y="158" font-size="11" fill="rgba(234,146,22,0.18)" font-family="monospace">  target.io</text>
+      <text x="20" y="180" font-size="11" fill="rgba(234,146,22,0.12)" font-family="monospace">PORT  STATE</text>
+      <text x="20" y="198" font-size="11" fill="rgba(234,146,22,0.10)" font-family="monospace">80    open</text>
+      <text x="20" y="216" font-size="11" fill="rgba(234,146,22,0.10)" font-family="monospace">443   open</text>
+      <text x="20" y="234" font-size="11" fill="rgba(234,146,22,0.08)" font-family="monospace">8443  open</text>
     </svg>`,
   },
   'llm-jailbreak': {
@@ -77,14 +77,14 @@ const cardMeta: Record<string, { cls: string; style?: string; svg: string }> = {
   },
   'home-manager-profiles': {
     cls: 'p7',
-    style: 'background:#060c0e;',
+    style: 'background:#1f242a;',
     svg: `<svg class="card-deco" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-      <text x="16" y="50"  font-size="10" fill="rgba(0,237,100,0.2)"  font-family="monospace">{ pkgs, ... }:</text>
-      <text x="16" y="68"  font-size="10" fill="rgba(0,237,100,0.15)" font-family="monospace">home.packages =</text>
-      <text x="16" y="86"  font-size="10" fill="rgba(0,237,100,0.12)" font-family="monospace">  with pkgs; [</text>
-      <text x="16" y="104" font-size="10" fill="rgba(0,237,100,0.1)"  font-family="monospace">    nuclei</text>
-      <text x="16" y="122" font-size="10" fill="rgba(0,237,100,0.1)"  font-family="monospace">    subfinder</text>
-      <text x="16" y="140" font-size="10" fill="rgba(0,237,100,0.08)" font-family="monospace">  ];</text>
+      <text x="16" y="50"  font-size="10" fill="rgba(234,146,22,0.2)"  font-family="monospace">{ pkgs, ... }:</text>
+      <text x="16" y="68"  font-size="10" fill="rgba(234,146,22,0.15)" font-family="monospace">home.packages =</text>
+      <text x="16" y="86"  font-size="10" fill="rgba(234,146,22,0.12)" font-family="monospace">  with pkgs; [</text>
+      <text x="16" y="104" font-size="10" fill="rgba(234,146,22,0.1)"  font-family="monospace">    nuclei</text>
+      <text x="16" y="122" font-size="10" fill="rgba(234,146,22,0.1)"  font-family="monospace">    subfinder</text>
+      <text x="16" y="140" font-size="10" fill="rgba(234,146,22,0.08)" font-family="monospace">  ];</text>
     </svg>`,
   },
   'bounty-tracker': {
@@ -172,7 +172,7 @@ const cardMeta: Record<string, { cls: string; style?: string; svg: string }> = {
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.08);
     padding: 5px 12px;
-    border-radius: 9999px;
+    border-radius: 4px;
     white-space: nowrap;
   }
 
@@ -187,15 +187,15 @@ const cardMeta: Record<string, { cls: string; style?: string; svg: string }> = {
     color: var(--accent);
     text-decoration: none;
     padding: 6px 14px;
-    border: 1px solid rgba(0,237,100,0.3);
-    border-radius: 9999px;
-    background: rgba(0,237,100,0.05);
+    border: 1px solid rgba(234,146,22,0.3);
+    border-radius: 4px;
+    background: rgba(234,146,22,0.05);
     transition: background 0.2s, border-color 0.2s, transform 0.2s;
     white-space: nowrap;
   }
   .projects-all-btn:hover {
-    background: rgba(0,237,100,0.12);
-    border-color: rgba(0,237,100,0.6);
+    background: rgba(234,146,22,0.12);
+    border-color: rgba(234,146,22,0.6);
     transform: translateY(-1px);
   }
   .projects-all-btn svg { width: 14px; height: 14px; fill: var(--accent); flex-shrink: 0; }
@@ -219,8 +219,8 @@ const cardMeta: Record<string, { cls: string; style?: string; svg: string }> = {
     display: block;
   }
   .project-card:hover { 
-    border-color: rgba(0,237,100,0.3); 
-    box-shadow: 0 8px 24px rgba(0,0,0,0.3), 0 0 0 1px rgba(0,237,100,0.15);
+    border-color: rgba(234,146,22,0.3); 
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3), 0 0 0 1px rgba(234,146,22,0.15);
   }
   .project-card:hover .project-overlay { opacity: 1; }
   .project-card:hover .project-img-bg  { transform: scale(1.05); }
@@ -237,7 +237,7 @@ const cardMeta: Record<string, { cls: string; style?: string; svg: string }> = {
 
   .project-overlay {
     position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(6,12,20,0.9) 0%, transparent 60%);
+    background: linear-gradient(to top, rgba(31,36,42,0.9) 0%, transparent 60%);
     opacity: 0;
     transition: opacity 0.3s;
     display: flex;
@@ -256,27 +256,27 @@ const cardMeta: Record<string, { cls: string; style?: string; svg: string }> = {
   .project-tag {
     position: absolute;
     top: 10px; right: 10px;
-    font-family: var(--font-label);
+    font-family: var(--font-mono);
     font-size: 0.6rem;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--muted);
-    background: rgba(6,12,20,0.7);
+    background: rgba(31,36,42,0.7);
     border: 0.5px solid rgba(255,255,255,0.1);
     padding: 3px 8px;
-    border-radius: 4px;
+    border-radius: 2px;
   }
 
   :global(.card-deco) { position: absolute; inset: 0; opacity: 0.6; }
 
-  .p1 { background: linear-gradient(135deg, #0d2235 0%, #1a1a2e 100%); }
-  .p2 { background: linear-gradient(135deg, #1a0d0d 0%, #2d1a1a 100%); }
-  .p3 { background: linear-gradient(135deg, #0d1a0d 0%, #1a2d1a 100%); }
-  .p4 { background: linear-gradient(135deg, #1a1a0d 0%, #2d2d1a 100%); }
-  .p5 { background: linear-gradient(135deg, #1a0d1a 0%, #2d1a2d 100%); }
-  .p6 { background: linear-gradient(135deg, #0d1a1a 0%, #1a2d2d 100%); }
-  .p7 { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); }
-  .p8 { background: linear-gradient(135deg, #0d0d1a 0%, #1a1a2d 100%); }
+  .p1 { background: linear-gradient(135deg, #2a3038 0%, #282d33 100%); }
+  .p2 { background: linear-gradient(135deg, #302428 0%, #382d2d 100%); }
+  .p3 { background: linear-gradient(135deg, #243028 0%, #2d3828 100%); }
+  .p4 { background: linear-gradient(135deg, #302d24 0%, #38382d 100%); }
+  .p5 { background: linear-gradient(135deg, #2d2430 0%, #382d38 100%); }
+  .p6 { background: linear-gradient(135deg, #243030 0%, #2d3838 100%); }
+  .p7 { background: linear-gradient(135deg, #282828 0%, #383838 100%); }
+  .p8 { background: linear-gradient(135deg, #242430 0%, #282d38 100%); }
 
   @media (max-width: 1023px) {
     .project-grid { grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 180px); }

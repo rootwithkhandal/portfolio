@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://khandal.tech/sitemap.xml
+Sitemap: https://khandal.tech/sitemap-index.xml

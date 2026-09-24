@@ -8,8 +8,8 @@ interface Props {
   meta: string;          // e.g. "Mar 2026 · 8 min read"  or  "GitHub · rootwithkhandal"
   backHref: string;
   backLabel: string;
-  externalUrl: string;
-  externalLabel: string;
+  externalUrl?: string;
+  externalLabel?: string;
   htmlContent: string;
   extraSchema?: object | object[];
 }
@@ -35,12 +35,14 @@ const currentYear = new Date().getFullYear();
         </svg>
         {backLabel}
       </a>
-      <a href={externalUrl} target="_blank" rel="noopener noreferrer" class="external-link">
-        {externalLabel}
-        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
+      {externalUrl && externalLabel && (
+        <a href={externalUrl} target="_blank" rel="noopener noreferrer" class="external-link">
+          {externalLabel}
+          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      )}
     </div>
   <div class="post-header">
     <span class="post-tag" style={`color:${tagColor};border-color:${tagColor}30;background:${tagColor}0d`}>{tag}</span>
@@ -95,15 +97,15 @@ const currentYear = new Date().getFullYear();
     color: var(--accent);
     text-decoration: none;
     padding: 5px 12px;
-    border: 1px solid rgba(0,237,100,0.3);
-    border-radius: 9999px;
-    background: rgba(0,237,100,0.05);
+    border: 1px solid rgba(234,146,22,0.3);
+    border-radius: 4px;
+    background: rgba(234,146,22,0.05);
     transition: background 0.2s, border-color 0.2s;
     white-space: nowrap;
   }
   .external-link:hover {
-    background: rgba(0,237,100,0.12);
-    border-color: rgba(0,237,100,0.6);
+    background: rgba(234,146,22,0.12);
+    border-color: rgba(234,146,22,0.6);
   }
   .external-link svg { width: 12px; height: 12px; flex-shrink: 0; }
 
@@ -156,7 +158,7 @@ const currentYear = new Date().getFullYear();
   .prose {
     font-family: var(--font-body);
     font-size: clamp(0.88rem, 1.5vw, 0.95rem);
-    color: #c8cdd6;
+    color: #b3bdc5;
     line-height: 1.85;
   }
 
@@ -176,24 +178,24 @@ const currentYear = new Date().getFullYear();
   .prose a {
     color: var(--accent);
     text-decoration: none;
-    border-bottom: 1px solid rgba(0,237,100,0.3);
+    border-bottom: 1px solid rgba(234,146,22,0.3);
     transition: border-color 0.2s;
   }
   .prose a:hover { border-color: var(--accent); }
 
   .prose code {
-    font-family: 'Fira Code', 'Cascadia Code', monospace;
+    font-family: var(--font-mono);
     font-size: 0.85em;
-    background: rgba(0,237,100,0.08);
-    border: 1px solid rgba(0,237,100,0.15);
+    background: rgba(234,146,22,0.08);
+    border: 1px solid rgba(234,146,22,0.15);
     border-radius: 4px;
     padding: 1px 6px;
     color: var(--accent);
   }
 
   .prose pre {
-    background: #002a3a;
-    border: 1px solid rgba(0,237,100,0.12);
+    background: #1f242a;
+    border: 1px solid rgba(234,146,22,0.12);
     border-radius: 12px;
     padding: 1.25rem 1.5rem;
     overflow-x: auto;
@@ -204,7 +206,7 @@ const currentYear = new Date().getFullYear();
     border: none;
     padding: 0;
     font-size: 0.82rem;
-    color: #a8d8f0;
+    color: #eeeeee;
   }
 
   .prose blockquote {
@@ -251,7 +253,7 @@ const currentYear = new Date().getFullYear();
     text-transform: uppercase;
     font-size: 0.65rem;
     color: var(--accent);
-    background: rgba(0,237,100,0.05);
+    background: rgba(234,146,22,0.05);
   }
 
   /* Footer */
